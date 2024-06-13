@@ -1,0 +1,397 @@
+/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Zilla Slab', serif;
+  background-color: #111;
+  color: #fff;
+}
+
+header {
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 42px;
+  font-weight: 600;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #3399FF;
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: url('bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  max-width: 1000px;
+  padding: 0 20px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #3399FF;
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #2a73bb;
+}
+
+section {
+  padding: 80px 0;
+}
+
+h2 {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature {
+  text-align: center;
+}
+
+.feature i {
+  font-size: 48px;
+  color: #3399FF;
+  margin-bottom: 20px;
+}
+
+.feature h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.feature p {
+  font-size: 18px;
+}
+
+.template-carousel {
+  /* Add styles for template carousel */
+}
+
+footer {
+  background-color: #000;
+  padding: 20px;
+  text-align: center;
+}
+
+#cta {
+  background-color: #1f1f1f;
+  padding: 100px 0;
+  text-align: center;
+  position: relative;
+}
+
+#cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('cta-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+#cta h2 {
+  font-size: 48px;
+  margin-bottom: 40px;
+}
+
+#cta .btn {
+  font-size: 24px;
+  padding: 16px 40px;
+}
+
+.template-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.template-item {
+  width: 300px;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.template-item:hover {
+  transform: translateY(-5px);
+}
+
+.template-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.template-item:hover img {
+  transform: scale(1.1);
+}
+
+.template-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.template-item:hover .template-overlay {
+  opacity: 1;
+}
+
+.template-overlay h3 {
+  color: #fff;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.template-overlay .btn {
+  font-size: 16px;
+  padding: 8px 20px;
+}
+
+#typed {
+  color: #3399FF;
+  display: inline-block;
+  /* Ensure the typed text is inline */
+  white-space: nowrap;
+  /* Prevent line wrapping */
+  overflow: hidden;
+  /* Hide any overflowing text */
+  vertical-align: top;
+  /* Align the typed text with the top of the heading */
+}
+
+.padding-nb {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.padding-nt {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.page-404-text-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  margin-bottom: 20px;
+}
+
+.page-404-text-content {
+  text-align: left;
+  justify-content: center;
+  align-items: center;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.a-styled {
+  color: #7abdff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.a-styled:hover {
+  color: #3399FF;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #222;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #3399FF;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #2e70b2;
+}
+
+.our-thesis {
+  background-color: #222;
+  padding: 30px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.our-thesis p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.logo img {
+  height: 50px;
+  /* Adjust the height as needed */
+}
+
+#our-mission {
+  background-color: #222;
+  padding: 30px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#our-mission h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+#our-mission p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.plain-english {
+  color: #3399FF;
+  font-weight: bold;
+  font-style: italic;
+}
+
+#our-approach {
+  background-color: #222;
+  padding: 30px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#our-approach h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+#our-approach p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.approach-diagram {
+  max-width: 800px;
+  margin: 0 auto 20px;
+}
+
+.approach-diagram img {
+  max-width: 100%;
+  height: auto;
+}
+
+#our-approach ul {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+#our-approach li {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
