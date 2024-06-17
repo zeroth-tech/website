@@ -5,7 +5,7 @@ All the goodness that goes into our website.  https://zeroth.technology, https:/
 https://zeroth-tech.github.io/blogs/
 
 ## Site Notes:
-- Zeroth Technology Logo font = Osmitron
+- Zeroth Technology Logo font = Orbitron
 
 ### Color Scheme
 - Blue: #3399FF
