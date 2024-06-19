@@ -1,6 +1,6 @@
 /* style.css */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 html {
   scroll-behavior: smooth;
@@ -14,7 +14,7 @@ html {
 
 body {
   font-family: 'Poppins', sans-serif;
-  font-family: 'Zilla Slab', serif;
+  font-family: 'Outfit', serif;
   background-color: #111;
   color: #fff;
 }
@@ -34,20 +34,24 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .logo {
-  font-size: 42px;
+  font-size: 32px;
   font-weight: 600;
 }
 
 nav ul {
   display: flex;
   list-style: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 nav ul li {
-  margin-left: 20px;
+  margin: 0 10px;
 }
 
 nav ul li a {
@@ -77,12 +81,12 @@ nav ul li a:hover {
 }
 
 .hero h1 {
-  font-size: 40px;
+  font-size: 32px;
   margin-bottom: 20px;
 }
 
 .hero p {
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 40px;
 }
 
@@ -101,11 +105,11 @@ nav ul li a:hover {
 }
 
 section {
-  padding: 80px 0;
+  padding: 60px 0;
 }
 
 h2 {
-  font-size: 36px;
+  font-size: 32px;
   text-align: center;
   margin-bottom: 40px;
 }
@@ -123,18 +127,18 @@ h2 {
 }
 
 .feature i {
-  font-size: 48px;
+  font-size: 40px;
   color: #3399FF;
   margin-bottom: 20px;
 }
 
 .feature h3 {
-  font-size: 24px;
+  font-size: 22px;
   margin-bottom: 10px;
 }
 
 .feature p {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .template-carousel {
@@ -149,7 +153,7 @@ footer {
 
 #cta {
   background-color: #1f1f1f;
-  padding: 100px 0;
+  padding: 80px 0;
   text-align: center;
   position: relative;
 }
@@ -175,12 +179,12 @@ footer {
 }
 
 #cta h2 {
-  font-size: 48px;
+  font-size: 40px;
   margin-bottom: 40px;
 }
 
 #cta .btn {
-  font-size: 24px;
+  font-size: 20px;
   padding: 16px 40px;
 }
 
@@ -239,7 +243,7 @@ footer {
 
 .template-overlay h3 {
   color: #fff;
-  font-size: 24px;
+  font-size: 22px;
   margin-bottom: 10px;
 }
 
@@ -272,15 +276,15 @@ footer {
 
 .page-404-text-grid {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 600px;
+  width: 100%;
   margin-bottom: 20px;
 }
 
 .page-404-text-content {
-  text-align: left;
+  text-align: center;
   justify-content: center;
   align-items: center;
   margin: 0 !important;
@@ -322,13 +326,13 @@ footer {
 }
 
 .our-thesis p {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.6;
   margin-bottom: 15px;
 }
 
 .logo img {
-  height: 50px;
+  height: 40px;
   /* Adjust the height as needed */
 }
 
@@ -340,12 +344,12 @@ footer {
 }
 
 #our-mission h2 {
-  font-size: 36px;
+  font-size: 32px;
   margin-bottom: 20px;
 }
 
 #our-mission p {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.6;
   margin-bottom: 15px;
 }
@@ -364,18 +368,18 @@ footer {
 }
 
 #our-approach h2 {
-  font-size: 36px;
+  font-size: 32px;
   margin-bottom: 20px;
 }
 
 #our-approach p {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.6;
   margin-bottom: 15px;
 }
 
 .approach-diagram {
-  max-width: 800px;
+  max-width: 100%;
   margin: 0 auto 20px;
 }
 
@@ -391,7 +395,7 @@ footer {
 }
 
 #our-approach li {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.6;
   margin-bottom: 10px;
 }
