@@ -34,11 +34,6 @@
     <button id="blinkButton">Start Encoding</button>
 
     <script>
-        // set blink colors
-        color1 = red //blink color
-        color2 = white //background color
-        color3 = blue //transmission end color
-
         // Generate QR Code
         new QRCode(document.getElementById("qrcode"), {
             text: "https://zeroth.tech",
@@ -53,9 +48,9 @@
 
         function manchesterEncode(bit) {
             if (bit === '0') {
-                return [color1, color2];
+                return ['cyan', 'black'];
             } else {
-                return [color2, color1];
+                return ['black', 'cyan'];
             }
         }
 
@@ -99,10 +94,10 @@
                     }
 
                     const bit = binaryHash[index];
-                    const [blink_color, background_color] = manchesterEncode(bit);
-                    document.body.style.backgroundColor = blink_color;
+                    const [color1, color2] = manchesterEncode(bit);
+                    document.body.style.backgroundColor = color1;
                     setTimeout(() => {
-                        document.body.style.backgroundColor = background_color;
+                        document.body.style.backgroundColor = color2;
                         index++;
                         setTimeout(encodeNextBit, 100);
                     }, 25);
