@@ -88,7 +88,7 @@
                     if (index >= binaryHash.length) {
                         blinkRed(3, () => {
                             index = 0;
-                            setTimeout(encodeNextBit, 50);
+                            setTimeout(encodeNextBit, 200);
                         });
                         return;
                     }
@@ -99,7 +99,7 @@
                     setTimeout(() => {
                         document.body.style.backgroundColor = color2;
                         index++;
-                        setTimeout(encodeNextBit, 25);
+                        setTimeout(encodeNextBit, 100);
                     }, 25);
                 }
 
