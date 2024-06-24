@@ -58,8 +58,8 @@
     
 
         // configure colors
-        let blink_color = 'blue'
-        let back_color = 'white'
+        let blink_color = 'cyan'
+        let back_color = 'black'
         let term_color = 'red'
         
         // Generate QR Code
@@ -76,9 +76,9 @@
 
         function manchesterEncode(bit) {
             if (bit === '0') {
-                return [changing_blink_color, back_color];
+                return [blink_color, back_color];
             } else {
-                return [back_color, changing_blink_color];
+                return [back_color, blink_color];
             }
         }
 
