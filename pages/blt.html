@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code and Blink Demo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: white;
+            transition: background-color 0.5s;
+        }
+
+        #qrcode {
+            margin-bottom: 20px;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="qrcode"></div>
+    <button id="blinkButton">Start Blinking</button>
+
+    <script>
+        // Generate QR Code
+        new QRCode(document.getElementById("qrcode"), {
+            text: "https://www.zeroth.tech",
+            width: 128,
+            height: 128
+        });
+
+        // Blinking function
+        let isBlinking = false;
+        let blinkInterval;
+
+        function toggleBlinking() {
+            if (isBlinking) {
+                clearInterval(blinkInterval);
+                document.body.style.backgroundColor = 'white';
+                document.getElementById('blinkButton').textContent = 'Start Blinking';
+            } else {
+                blinkInterval = setInterval(() => {
+                    document.body.style.backgroundColor =
+                        document.body.style.backgroundColor === 'blue' ? 'white' : 'blue';
+                }, 500);
+                document.getElementById('blinkButton').textContent = 'Stop Blinking';
+            }
+            isBlinking = !isBlinking;
+        }
+
+        document.getElementById('blinkButton').addEventListener('click', toggleBlinking);
+    </script>
+</body>
+
+</html>
