@@ -32,8 +32,36 @@
 <body>
     <div id="qrcode"></div>
     <button id="blinkButton">Start Encoding</button>
+    <div id="colorBox"></div>
 
     <script>
+        // rotate blink color (trying to find the best contrast)
+        let r = 0, g = 0, b = 0;
+        let stage = 0;
+
+
+        function updateColor() {
+            changing_blink_color = `rgb(${r}, ${g}, ${b})`;
+            colorBox.textContent = `RGB(${r}, ${g}, ${b})`;
+
+            switch(stage) {
+                case 0: r < 255 ? r++ : stage++; break;
+                case 1: g < 255 ? g++ : stage++; break;
+                case 2: b < 255 ? b++ : stage++; break;
+                case 3: r > 0 ? r-- : stage++; break;
+                case 4: g > 0 ? g-- : stage++; break;
+                case 5: b > 0 ? b-- : stage = 0; break;
+            }
+        }
+
+        setInterval(updateColor, 100); // Update every 1/765 second for a full cycle in 1 second
+    
+
+        // configure colors
+        let blink_color = 'blue'
+        let back_color = 'white'
+        let term_color = 'red'
+        
         // Generate QR Code
         new QRCode(document.getElementById("qrcode"), {
             text: "https://zeroth.tech",
@@ -48,9 +76,9 @@
 
         function manchesterEncode(bit) {
             if (bit === '0') {
-                return ['cyan', 'black'];
+                return [changing_blink_color, back_color];
             } else {
-                return ['black', 'cyan'];
+                return [back_color, changing_blink_color];
             }
         }
 
