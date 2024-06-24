@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code and Blink Demo</title>
+    <title>QR Code and Manchester Encoding Demo</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         body {
@@ -15,7 +15,7 @@
             height: 100vh;
             margin: 0;
             background-color: white;
-            transition: background-color 0.5s;
+            transition: background-color 0.025s;
         }
 
         #qrcode {
@@ -31,36 +31,83 @@
 
 <body>
     <div id="qrcode"></div>
-    <button id="blinkButton">Start Blinking</button>
+    <button id="blinkButton">Start Encoding</button>
 
     <script>
         // Generate QR Code
         new QRCode(document.getElementById("qrcode"), {
-            text: "https://www.zeroth.tech",
+            text: "https://zeroth.tech",
             width: 128,
             height: 128
         });
 
-        // Blinking function
-        let isBlinking = false;
-        let blinkInterval;
+        // Manchester encoding function
+        const hash = "0xFD98DECDDD9F0cF205e5cB40fe61a6CAF8De59A5";
+        const binaryHash = BigInt(hash).toString(2).padStart(160, '0');
+        let index = 0;
 
-        function toggleBlinking() {
-            if (isBlinking) {
-                clearInterval(blinkInterval);
-                document.body.style.backgroundColor = 'white';
-                document.getElementById('blinkButton').textContent = 'Start Blinking';
+        function manchesterEncode(bit) {
+            if (bit === '0') {
+                return ['blue', 'white'];
             } else {
-                blinkInterval = setInterval(() => {
-                    document.body.style.backgroundColor =
-                        document.body.style.backgroundColor === 'blue' ? 'white' : 'blue';
-                }, 500);
-                document.getElementById('blinkButton').textContent = 'Stop Blinking';
+                return ['white', 'blue'];
             }
-            isBlinking = !isBlinking;
         }
 
-        document.getElementById('blinkButton').addEventListener('click', toggleBlinking);
+        let isEncoding = false;
+        let encodeInterval;
+
+        function blinkRed(count, callback) {
+            let blinkCount = 0;
+            const redBlinkInterval = setInterval(() => {
+                if (blinkCount >= count * 2) {
+                    clearInterval(redBlinkInterval);
+                    document.body.style.backgroundColor = 'white';
+                    if (callback) callback();
+                    return;
+                }
+                document.body.style.backgroundColor = blinkCount % 2 === 0 ? 'red' : 'white';
+                blinkCount++;
+            }, 25);
+        }
+
+        function toggleEncoding() {
+            if (isEncoding) {
+                clearInterval(encodeInterval);
+                document.body.style.backgroundColor = 'white';
+                document.getElementById('blinkButton').textContent = 'Start Encoding';
+                isEncoding = false;
+            } else {
+                index = 0;
+                isEncoding = true;
+                document.getElementById('blinkButton').textContent = 'Stop Encoding';
+
+                function encodeNextBit() {
+                    if (!isEncoding) return;
+
+                    if (index >= binaryHash.length) {
+                        blinkRed(3, () => {
+                            index = 0;
+                            setTimeout(encodeNextBit, 50);
+                        });
+                        return;
+                    }
+
+                    const bit = binaryHash[index];
+                    const [color1, color2] = manchesterEncode(bit);
+                    document.body.style.backgroundColor = color1;
+                    setTimeout(() => {
+                        document.body.style.backgroundColor = color2;
+                        index++;
+                        setTimeout(encodeNextBit, 25);
+                    }, 25);
+                }
+
+                encodeNextBit();
+            }
+        }
+
+        document.getElementById('blinkButton').addEventListener('click', toggleEncoding);
     </script>
 </body>
 
