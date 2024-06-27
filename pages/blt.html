@@ -14,7 +14,7 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            background-color: white;
+            background-color: black;
             transition: background-color 0.025s;
         }
 
@@ -32,10 +32,14 @@
 <body>
     <div id="qrcode"></div>
     <button id="blinkButton">Start Encoding</button>
+    <div id="statusBar" style="width: 100%; height: 20px; background-color: #f0f0f0; margin-top: 10px;">
+        <div id="progressBar" style="width: 0%; height: 100%; background-color: #4CAF50;"></div>
+    </div>
+    <div id="statusText" style="text-align: center; margin-top: 5px;">0% Complete</div>
     <div id="colorBox"></div>
 
     <script>
-        // rotate blink color (trying to find the best contrast)
+     /*   // rotate blink color (trying to find the best contrast)
         let r = 0, g = 0, b = 0;
         let stage = 0;
 
@@ -55,7 +59,7 @@
         }
 
         setInterval(updateColor, 100); // Update every 1/765 second for a full cycle in 1 second
-    
+        */
 
         // configure colors
         let blink_color = 'cyan'
@@ -63,14 +67,14 @@
         let term_color = 'red'
 
         // set blink rate in milliseconds
-        let br = 200
+        let br = 100
 
         // get the attestation UID
         let UID = "0x144fec63505680f8f0a6dee7e3b16f0f147715586aa0fe6e7ee65b940d23c570"
         
         // Generate QR Code
         new QRCode(document.getElementById("qrcode"), {
-            text: "https://easscan.org/attestation/view/", UID
+            text: "https://easscan.org/attestation/view/" + UID,
             width: 128,
             height: 128
         });
@@ -96,11 +100,11 @@
             const redBlinkInterval = setInterval(() => {
                 if (blinkCount >= count * 2) {
                     clearInterval(redBlinkInterval);
-                    document.body.style.backgroundColor = 'white';
+                    document.body.style.backgroundColor = back_color;
                     if (callback) callback();
                     return;
                 }
-                document.body.style.backgroundColor = blinkCount % 2 === 0 ? 'red' : 'white';
+                document.body.style.backgroundColor = blinkCount % 2 === 0 ? term_color : back_color;
                 blinkCount++;
             }, 25);
         }
@@ -108,7 +112,7 @@
         function toggleEncoding() {
             if (isEncoding) {
                 clearInterval(encodeInterval);
-                document.body.style.backgroundColor = 'white';
+                document.body.style.backgroundColor = back_color;
                 document.getElementById('blinkButton').textContent = 'Start Encoding';
                 isEncoding = false;
             } else {
@@ -123,8 +127,16 @@
                         blinkRed(3, () => {
                             index = 0;
                             setTimeout(encodeNextBit, br);
-                        });
+                            // Reset progress bar and status text
+                            document.getElementById('progressBar').style.width = '0%';
+                            document.getElementById('statusText').innerText = 'Encoded Broadcast 0% Complete';
+                        })
                         return;
+                    }
+                    if (index < binaryHash.length) { // Update progress bar and status text      
+                        const progress = (index / binaryHash.length) * 100;
+                        document.getElementById('progressBar').style.width = progress + '%';
+                        document.getElementById('statusText').innerText = 'Encoded Broadcast ' + Math.round(progress) + '% Complete';
                     }
 
                     const bit = binaryHash[index];
