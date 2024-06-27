@@ -61,16 +61,22 @@
         let blink_color = 'cyan'
         let back_color = 'black'
         let term_color = 'red'
+
+        // set blink rate in milliseconds
+        let br = 200
+
+        // get the attestation UID
+        let UID = "0x144fec63505680f8f0a6dee7e3b16f0f147715586aa0fe6e7ee65b940d23c570"
         
         // Generate QR Code
         new QRCode(document.getElementById("qrcode"), {
-            text: "https://zeroth.tech",
+            text: "https://easscan.org/attestation/view/", UID
             width: 128,
             height: 128
         });
 
         // Manchester encoding function
-        const hash = "0xFD98DECDDD9F0cF205e5cB40fe61a6CAF8De59A5";
+        const hash = UID;
         const binaryHash = BigInt(hash).toString(2).padStart(160, '0');
         let index = 0;
 
@@ -113,10 +119,10 @@
                 function encodeNextBit() {
                     if (!isEncoding) return;
 
-                    if (index >= binaryHash.length) {
+                    if (index >= binaryHash.length) { // blink a sequence of 3 reds at the end of a transmission
                         blinkRed(3, () => {
                             index = 0;
-                            setTimeout(encodeNextBit, 400);
+                            setTimeout(encodeNextBit, br);
                         });
                         return;
                     }
@@ -127,7 +133,7 @@
                     setTimeout(() => {
                         document.body.style.backgroundColor = color2;
                         index++;
-                        setTimeout(encodeNextBit, 200);
+                        setTimeout(encodeNextBit, br);
                     }, 25);
                 }
 
