@@ -40,6 +40,25 @@ nav {
 .logo {
   font-size: 32px;
   font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.logo.show {
+  opacity: 1;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 nav ul {
@@ -106,6 +125,19 @@ nav ul li a:hover {
 
 section {
   padding: 60px 0;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+section:first-child {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+section.animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 h2 {

@@ -12,4 +12,6 @@ https://zeroth-tech.github.io/blogs/
 - Blue: #3399FF
 - Black:
 - Grey:
-- 
+
+
+  - ethan made this
