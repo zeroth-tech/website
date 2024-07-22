@@ -39,17 +39,39 @@
     <div id="colorBox"></div>
 
     <script>
+     /*   // rotate blink color (trying to find the best contrast)
+        let r = 0, g = 0, b = 0;
+        let stage = 0;
+
+
+        function updateColor() {
+            changing_blink_color = `rgb(${r}, ${g}, ${b})`;
+            colorBox.textContent = `RGB(${r}, ${g}, ${b})`;
+
+            switch(stage) {
+                case 0: r < 255 ? r++ : stage++; break;
+                case 1: g < 255 ? g++ : stage++; break;
+                case 2: b < 255 ? b++ : stage++; break;
+                case 3: r > 0 ? r-- : stage++; break;
+                case 4: g > 0 ? g-- : stage++; break;
+                case 5: b > 0 ? b-- : stage = 0; break;
+            }
+        }
+
+        setInterval(updateColor, 100); // Update every 1/765 second for a full cycle in 1 second
+        */
+
         // configure colors
         let blink_color = 'cyan'
         let back_color = 'black'
         let term_color = 'red'
 
-        // set blink rate in milliseconds (doubled speed)
-        let br = 50
+        // set blink rate in milliseconds
+        let br = 100
 
         // get the attestation UID
         let UID = "0x144fec63505680f8f0a6dee7e3b16f0f147715586aa0fe6e7ee65b940d23c570"
-
+        
         // Generate QR Code
         new QRCode(document.getElementById("qrcode"), {
             text: "https://easscan.org/attestation/view/" + UID,
@@ -73,7 +95,7 @@
         let isEncoding = false;
         let encodeInterval;
 
-        function blinkRed(count, duration, callback) {
+        function blinkRed(count, callback) {
             let blinkCount = 0;
             const redBlinkInterval = setInterval(() => {
                 if (blinkCount >= count * 2) {
@@ -84,7 +106,7 @@
                 }
                 document.body.style.backgroundColor = blinkCount % 2 === 0 ? term_color : back_color;
                 blinkCount++;
-            }, duration);
+            }, 25);
         }
 
         function toggleEncoding() {
@@ -101,41 +123,30 @@
                 function encodeNextBit() {
                     if (!isEncoding) return;
 
-                    if (index === 0) {
-                        blinkRed(3, 500, () => {
-                            setTimeout(continueEncoding, br);
-                        });
+                    if (index >= binaryHash.length) { // blink a sequence of 3 reds at the end of a transmission
+                        blinkRed(3, () => {
+                            index = 0;
+                            setTimeout(encodeNextBit, br);
+                            // Reset progress bar and status text
+                            document.getElementById('progressBar').style.width = '0%';
+                            document.getElementById('statusText').innerText = 'Encoded Broadcast 0% Complete';
+                        })
                         return;
                     }
-
-                    function continueEncoding() {
-                        if (index >= binaryHash.length) {
-                            blinkRed(3, 500, () => {
-                                index = 0;
-                                setTimeout(encodeNextBit, br);
-                                // Reset progress bar and status text
-                                document.getElementById('progressBar').style.width = '0%';
-                                document.getElementById('statusText').innerText = 'Encoded Broadcast 0% Complete';
-                            });
-                            return;
-                        }
-                        if (index < binaryHash.length) {
-                            const progress = (index / binaryHash.length) * 100;
-                            document.getElementById('progressBar').style.width = progress + '%';
-                            document.getElementById('statusText').innerText = 'Encoded Broadcast ' + Math.round(progress) + '% Complete';
-                        }
-
-                        const bit = binaryHash[index];
-                        const [color1, color2] = manchesterEncode(bit);
-                        document.body.style.backgroundColor = color1;
-                        setTimeout(() => {
-                            document.body.style.backgroundColor = color2;
-                            index++;
-                            setTimeout(encodeNextBit, br);
-                        }, br);
+                    if (index < binaryHash.length) { // Update progress bar and status text      
+                        const progress = (index / binaryHash.length) * 100;
+                        document.getElementById('progressBar').style.width = progress + '%';
+                        document.getElementById('statusText').innerText = 'Encoded Broadcast ' + Math.round(progress) + '% Complete';
                     }
 
-                    continueEncoding();
+                    const bit = binaryHash[index];
+                    const [color1, color2] = manchesterEncode(bit);
+                    document.body.style.backgroundColor = color1;
+                    setTimeout(() => {
+                        document.body.style.backgroundColor = color2;
+                        index++;
+                        setTimeout(encodeNextBit, br);
+                    }, 25);
                 }
 
                 encodeNextBit();
