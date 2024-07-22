@@ -1,11 +1,13 @@
 # What is this blinky light thing?
 
-The advances in real-time filtering on video and audio content has got us scared.  It won't be long before we don't "know" if there is actually a person on the other end of that zoom meeting.  Maybe it is someone else that applied a filter that makes them look and sound like someone else, maybe it's an AI all together.  If you don't believe how close this is, check out a few of these posts on Patrick's Twitter...
+The advances in real-time filtering on video and audio content have gotten us scared.  It won't be long before we can't "know" if there is actually a person on the other end of our video conference, or if a "live broadcast" is actually a live-streaming deep fake.  We are't just talking about the deep fakes that are already prevalent in our favorite media outlets, we are talking about interacting with someone who is actually someone else.  If you don't believe how close this is, check out the [adversarial model](link) that Ankur and Patrick have put together.
 
->[!Important]
-> To be clear we are not saying that this technology is bad - it's an evolution and it's fun /exciting - but if it is used to fool people we think that is dangerous.
+> [!Important]
+> To be clear we are not saying that this technology is bad or even that it is being used with mal-intent, it is an evolution and it can have a lot of benefits - but if it is used to fool people we think that is dangerous.
 
-Our goal with the blinky light thing (technically called the BLT) is to introduce elements of cryptography into the physical environment that is being recorded by capture devices.  This lets us bake cryptographic messages into the raw video and audio feed of the broadcast which become really difficult to modify later on.  Our intent is prove the broadcast is both **Authentic**: the person presenting is who they claim to be, and **Contemporaneous**: the broadcast is happening when the presenter claims it is happening.
+Our goal with the blinky light thing (technically called the BLT) is to introduce elements of cryptography into the physical environment that is being recorded by audio/video capture devices.  This lets us bake cryptographic messages into the raw video and audio feed of the broadcast which become really difficult to modify later on.  Our intent is prove the broadcast is both
+     **Authentic**: the person presenting is who they claim to be, and
+     **Contemporaneous**: the broadcast is happening when the presenter claims it is happening
 
 We have a full write up available on how it works and our motivations behind it that you can find [here](https://zeroth.technology/our_writings) on our blog site, but we think a video is much easier to understand.
 
@@ -25,7 +27,7 @@ the tiles above need to be clickable.  on click show a section beneath with more
 ```
 
 ### Prepare Text
-First you need a BLT - you can [build one with a raspberry pi] but we prefer to use a lightweight ESP32 paired via blue tooth to our phone - [here] is a step by step tutorial.  If you want to skip that step you can buy one [here] or you can use your phone as the light source (but it doesn't work as well...).
+First you need a BLT - you can build one with a raspberry pi but we prefer to use a lightweight ESP32 paired via blue tooth to our phone - [here](link) is a step by step tutorial.  If you want to skip that step you can buy one [here](link) or you can use your phone as the light source (but it doesn't work as well...).
 
 Start a session by making an attestation using EAS.  This requires that you have a wallet - we have schemas defined for EAS on Etherum mainnet, Arbitrum, and Base.  The wallet will need to be tied to your public identity - there are several ways to do this (gitcoin passport, proof of humanity, worldcoin, etc) and there will continue to be more in the future.
 
@@ -33,15 +35,15 @@ The attestation includes the following data (I've included sample text below):
 
 + Full_Name: James Canterbury
 + BLT_Message_LED_Color: Blue
-+ BLT_Termination_Color
++ BLT_Termination_Color: Red
 + BLT_Blink_Rate: 0.05 Seconds
-+ BLT_Chirp_Amp: +20 kHz
++ ~~BLT_Chirp_Amp: +20 kHz~~
 + Desciption*: "I am making a public statement"
 
 The attestation returns a 64 character hexidecimal string which both serves as a pointer to the attestation and a unique ID that would be impossible to determine ahead of time.
 
 > [!TIP]
-> Creating the attestation using your wallet proves that it is the authentic you (assuming you control your keys and have used sme form of proof of personhood). The UID of the attestation uses the time stamp of the Ethereum bock in which the attestation is posted - proving that your session is contemporaneous.
+> Creating the attestation using your wallet proves that it is the authentic you (assuming you control your keys and have used smme form of proof of personhood). The UID of the attestation uses the time stamp of the Ethereum block in which the attestation is posted - proving that your session is contemporaneous.
 
 EAS returns a QR code that uses the UID to point to your attestation - you are now ready to present.
 
