@@ -27,25 +27,25 @@ the tiles above need to be clickable.  on click show a section beneath with more
 ```
 
 ### Prepare Text
-First you need a BLT - you can build one with a raspberry pi but we prefer to use a lightweight ESP32 paired via blue tooth to our phone - [here](link) is a step by step tutorial.  If you want to skip that step you can buy one [here](link) or you can use your phone as the light source (but it doesn't work as well...).
+First you need a BLT - you can build one with pretty much any micro-controller that has bluetooth - we prefer to use a lightweight ESP32 paired via bluetooth to our phone - we are working on posting a step by step tutorial.  If you want to skip building a BLT you can ask us to do it for you - just cover parts and shipping and we got you covered.  You can also use your phone as the light source (but it doesn't work as well...).
 
-Start a session by making an attestation using EAS.  This requires that you have a wallet - we have schemas defined for EAS on Etherum mainnet, Arbitrum, and Base.  The wallet will need to be tied to your public identity - there are several ways to do this (gitcoin passport, proof of humanity, worldcoin, etc) and there will continue to be more in the future.
+Start a session by making an attestation using EAS.  This requires that you have a wallet - we have schemas defined for EAS on Etherum mainnet - we are planning to include Arbitrum and Base in the near future.  The wallet will need to be tied to your public identity - there are several ways to do this today (gitcoin passport, proof of humanity, worldcoin, etc) and there will continue to be more in the future.
 
 The attestation includes the following data (I've included sample text below):
 
 + Full_Name: James Canterbury
-+ BLT_Message_LED_Color: Blue
++ BLT_Message_Color: Blue
 + BLT_Termination_Color: Red
-+ BLT_Blink_Rate: 0.05 Seconds
-+ ~~BLT_Chirp_Amp: +20 kHz~~
-+ Desciption*: "I am making a public statement"
++ BLT_Blink_Rate: 200 ms
++ Description*: "I am making a public statement"
 
 The attestation returns a 64 character hexidecimal string which both serves as a pointer to the attestation and a unique ID that would be impossible to determine ahead of time.
 
 > [!TIP]
-> Creating the attestation using your wallet proves that it is the authentic you (assuming you control your keys and have used smme form of proof of personhood). The UID of the attestation uses the time stamp of the Ethereum block in which the attestation is posted - proving that your session is contemporaneous.
+> Creating the attestation using your wallet proves that it is the authentic you (assuming you control your keys and have used some form of proof of personhood). The UID of the attestation uses the time stamp of the Ethereum block in which the attestation is posted - proving that your session is contemporaneous.
 
-EAS returns a QR code that uses the UID to point to your attestation - you are now ready to present.
+At this point if you know the URL for your live stream you can bundle the UID, blink rate, LED colors and your live stream link into one convenient URL which you can share with your audience.  If that sounds like a lot, you can use our <a href=./BLT_Create.html> BLT Create Site </a>
+
 
 ### Present Text
 

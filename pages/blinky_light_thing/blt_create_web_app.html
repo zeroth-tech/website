@@ -14,155 +14,40 @@ Acknowledgements:  A good portion of this code was based on the project https://
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>BLT Web BLE App</title>
+    <title>BLT Create - Web BLE App</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        transition: background-color 0.3s, color 0.3s;
-    }
-    .container {
-        background: var(--container-bg);
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        max-width: 600px;
-        width: 100%;
-        text-align: center;
-        transition: background 0.3s;
-    }
-    h1 {
-        color: var(--primary-color);
-        margin-bottom: 10px;
-    }
-    p {
-        color: var(--secondary-color);
-        margin-bottom: 20px;
-    }
-    h2, h3 {
-        color: var(--primary-color);
-        margin-bottom: 10px;
-    }
-    label {
-        display: block;
-        margin: 10px 0 5px;
-        font-weight: bold;
-    }
-    input[type="text"],
-    input[type="number"] {
-        width: calc(100% - 22px);
-        padding: 10px;
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        background-color: var(--input-bg);
-        color: var(--input-color);
-        border: 1px solid var(--input-border);
-        transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    }
-    button {
-        background-color: var(--button-bg);
-        color: var(--button-color);
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-        margin: 5px;
-        transition: background-color 0.3s, color 0.3s;
-    }
-    button:hover {
-        background-color: var(--button-hover-bg);
-    }
-    #bleState {
-        font-weight: bold;
-    }
-    #qrcode {
-        margin: 20px 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    table {
-        width: 100%;
-        height: 100px;
-        border: 1px solid #ccc;
-        margin-bottom: 20px;
-        background-color: var(--table-bg);
-        transition: background-color 0.3s;
-    }
-    .dark-mode {
-        --container-bg: #333;
-        --primary-color: #fff;
-        --secondary-color: #ddd;
-        --input-bg: #555;
-        --input-color: #fff;
-        --input-border: #888;
-        --button-bg: #444;
-        --button-color: #fff;
-        --button-hover-bg: #666;
-        --table-bg: #444;
-        background-color: #222;
-        color: #fff;
-    }
-    .light-mode {
-        --container-bg: #fff;
-        --primary-color: #007bff;
-        --secondary-color: #555;
-        --input-bg: #fff;
-        --input-color: #333;
-        --input-border: #ccc;
-        --button-bg: #007bff;
-        --button-color: #fff;
-        --button-hover-bg: #0056b3;
-        --table-bg: #fff;
-        background-color: #f4f4f9;
-        color: #333;
-    }
-    .theme-toggle {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-        color: var(--primary-color);
-        padding: 10px;
-        transition: color 0.3s;
-    }
-    .theme-toggle:hover {
-        color: var(--button-hover-bg);
-    }
-</style>
-</head>
-<body class="light-mode">
-<button class="theme-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+<body>
 <div class="container">
     <h1>BLT Web BLE App</h1>
-    <p>That's shorthand for Blinky Light Thing Web Bluetooth Low Energy Application</p>
-    <h2>Step 1: Create attestation</h2>
-    <label for="message">EAD UID:</label>
-    <input type="text" id="message" maxlength="64" value="144fec63505680f8f0a6dee7e3b16f0f147715586aa0fe6e7ee65b940d23c570"><br>
-    <div id="qrcode"></div>
-    <div><label for="blink_rate">Blink Rate (ms):</label><input type="number" id="blink_rate" value="200"></div>
-    <h2>Step 2: Connect BLT</h2>
+    <p><i>that's shorthand for Blinky Light Thing Web Bluetooth Low Energy Application</i></p>
+    <br>
+    <h2>Step 1: Connect your BLT</h2>
     <button id="connectBleButton">Connect BLT</button>
     <p>BLT state: <strong><span id="bleState" style="color:#d13a30;">Disconnected</span></strong></p>
-    <h2>Step 3: Start Blinking</h2>
+    <div><label for="blink_rate">Blink Rate (ms):</label><input type="number" id="blink_rate" value="200"></div>
+    <br>
+    <h2>Step 2: Attest to yourself!</h2>
+    <p><i> This will route you to <a href="attest.org">Ethereum Attestation Services (EAS)</a> where you will need a wallet to attest with the <a href="https://easscan.org/schema/view/0xe97cac0bc14e959c19b7f21d33f5869194092dd7d700f04fca3a483c848f7807">BLT Create schema</a></i></p>
+    <button id="createAttestation">Attest on EAS</button>
+    <br>
+    <br>
+    <h2>Step 3: Share this code</h2>
+    <p><i>This QR code contains a link to a verifier for your video</i></p>
+    <p><i>Embedded in the link is the UID from EAS (the code to be verified) and the blink rate of your BLT</i></p><br>
+    <label for="message">EAS UID:</label><input type="text" id="message" maxlength="64" value="0x144fec63505680f8f0a6dee7e3b16f0f147715586aa0fe6e7ee65b940d23c570"><br>
+    <br>
+    <span><div id="qrcode"></div></span>
+    <br>
+    <h2>Step 4: Start Blinking</h2>
     <button id="startBlinking">Start Blinking</button>
     <button id="stopBlinking">Stop Blinking</button>
+    <br>
+    <br>
 </div>
 </body>
 
