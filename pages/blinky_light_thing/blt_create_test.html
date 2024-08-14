@@ -20,6 +20,8 @@ Acknowledgements:  A good portion of this code was based on the project https://
     <link rel="stylesheet" href="./blt_assets/blt_css/style.css">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.2/css/all.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.0.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ethereum-attestation-service/eas-sdk@0.28.2/dist/umd/eas-sdk.min.js"></script>
 </head>
 
 <body>
@@ -46,7 +48,7 @@ Acknowledgements:  A good portion of this code was based on the project https://
             <br>
             <h2>Step 2: Attest to yourself!</h2>
             <p><i> This will route you to <a href="attest.org">Ethereum Attestation Services (EAS)</a> where you will need a wallet to attest with the <a href="https://easscan.org/schema/view/0xe97cac0bc14e959c19b7f21d33f5869194092dd7d700f04fca3a483c848f7807">BLT Create schema</a></i></p>
-            <button id="createAttestation">Attest on EAS</button>
+            <button id="attestButton">Attest on EAS</button>
             <br>
             <label for="message">EAS UID:</label><input type="text" id="message" maxlength="64" value="0x144fec63505680f8f0a6dee7e3b16f0f147715586aa0fe6e7ee65b940d23c570"><br>
             <br>
@@ -93,6 +95,58 @@ Acknowledgements:  A good portion of this code was based on the project https://
     //Global Variables to Handle Bluetooth
     var bleServer;
     var bleServiceFound;
+
+    // create attestation on EAS
+ 
+    const EAS_SCHEMA = "0x7857669b61110d06c2188f9b218bb90facf96ffe2ec59d9657dfd1b529c23e7a";
+    const EAS_CONTRACT_ADDRESS = "0xC2679fBD37d54388Ce493F1DB75320D236e1815e"; // Sepolia testnet address
+
+    async function attestOnEAS() {
+        if (typeof window.ethereum === 'undefined') {
+            alert('Please install MetaMask to use this feature');
+            return;
+        }
+
+        try {
+            // Request account access
+            await window.ethereum.request({ method: 'eth_requestAccounts' });
+
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const signer = provider.getSigner();
+
+            // Initialize EAS SDK
+            const eas = new EAS(EAS_CONTRACT_ADDRESS);
+            eas.connect(signer);
+
+            // Prepare attestation data
+            const attestationData = {
+                recipient: await signer.getAddress(),
+                expirationTime: 0, // No expiration
+                revocable: true,
+                data: ethers.utils.defaultAbiCoder.encode(
+                    ['string', 'string'], // Adjust these types based on your schema
+                    ['BLT Device', 'Some additional data']
+                )
+            };
+
+            // Create attestation
+            const tx = await eas.attest({
+                schema: EAS_SCHEMA,
+                data: attestationData,
+            });
+
+            const newAttestationUID = await tx.wait();
+
+            console.log("Attestation created with UID:", newAttestationUID);
+            alert("Attestation created successfully!");
+        } catch (error) {
+            console.error("Error during attestation:", error);
+            alert("Error during attestation. Check console for details.");
+        }
+    }
+
+    document.getElementById('attestButton').addEventListener('click', attestOnEAS);
+
 
     // Generate QR Code
     new QRCode(document.getElementById("qrcode"), {

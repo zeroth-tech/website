@@ -17,11 +17,6 @@ body {
   font-family: 'Outfit', serif;
   background-color: #111;
   color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background-color 0.3s, color 0.3s;
-
 }
 
 header {
@@ -34,56 +29,6 @@ header {
   right: 0;
   z-index: 999;
 }
-h1 {
-    color: #3399FF;
-    font-weight: bold;
-}
-h2 {
-  color: #3399FF;
-  font-weight: normal;
-  font-style: italic;
-  font-size: 32px;
-  text-align: center;
-}
-h3 {
-  color: #fff;
-  font-weight: bold;
-  font-style: normal;
-  font-size: 20px;
-  text-align: center;
-}
-h4 {
-  color: #3399FF;
-  font-weight: bold;
-  padding: 10px;
-}
-
-input[type="text"]{
-    width: calc(100% - 200px);
-    padding: 5px;
-    border: 1px solid #fff;
-    border-radius: 4px;
-    box-sizing: border-box;
-    background-color: var(--input-bg);
-    color: var(--input-color);
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-}
-input[type="number"] {
-    width: 75px;
-    padding: 5px;
-    border: 1px solid #fff;
-    border-radius: 4px;
-    box-sizing: border-box;
-    background-color: var(--input-bg);
-    color: var(--input-color);
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-}
-#qrcode {
-  margin: 20px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 nav {
   display: flex;
@@ -92,16 +37,6 @@ nav {
   flex-wrap: wrap;
 }
 
-.container {
-  background: var(--container-bg);
-  padding: 5px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-width: 1000px;
-  width: 100%;
-  text-align: center;
-  transition: background 0.3s;
-}
 .logo {
   font-size: 32px;
   font-weight: 600;
@@ -154,7 +89,7 @@ nav ul li a:hover {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-image: '/assets/img/bg.jpg';
+  background-image: url('/assets/img/bg.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -205,6 +140,12 @@ section.animate {
   transform: translateY(0);
 }
 
+h2 {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
 .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -230,10 +171,6 @@ section.animate {
 
 .feature p {
   font-size: 16px;
-}
-
-.template-carousel {
-  /* Add styles for template carousel */
 }
 
 footer {
@@ -489,83 +426,4 @@ footer {
   font-size: 16px;
   line-height: 1.6;
   margin-bottom: 10px;
-}
-/* Style for paragraphs with indentation */
-.indented-paragraph {
-  text-indent: 2em; /* Indent the first line of the paragraph */
-  margin-bottom: 1em; /* Add space after each paragraph */
-  line-height: 1.6; /* Set line height for better readability */
-  padding: 10px;
-}
-/* Style for unordered lists */
-.custom-list {
-  list-style-type: disc; /* Use disc bullets for the list */
-  margin-left: 2em; /* Add left margin to indent the list */
-  margin-bottom: 1em; /* Add space after the list */
-}
-
-/* Style for ordered lists */
-.custom-ordered-list {
-  list-style-type: decimal; /* Use numbers for the list */
-  margin-left: 2em; /* Add left margin to indent the list */
-  margin-bottom: 1em; /* Add space after the list */
-}
-
-/* Style for list items */
-.custom-list-item {
-  margin-bottom: 0.5em; /* Add space between list items */
-}
-.overlay {
-  position: absolute;
-  cursor: pointer;
-  color: white;
-  font-weight: bold;
-}
-.graphic_container{
-  position: relative;
-  display: inline-block;
-}
-#info {
-  margin-top: 20px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  display: none;
-  width: 500px;
-}
-.iframe-container {
-  width: 80%;
-  height: 300px;
-  border: 2px solid #ccc;
-  overflow: hidden;
-  padding: 5px;
-}
-iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-/* Style for unvisited links */
-a:link {
-  color: #3399FF
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* Style for visited links */
-a:visited {
-  color: #3399FF
-  text-decoration: none;
-}
-
-/* Style for links on hover */
-a:hover {
-  color: red;
-  text-decoration: underline;
-}
-
-/* Style for active links */
-a:active {
-  color: orange;
-  text-decoration: underline;
 }

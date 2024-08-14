@@ -4,7 +4,7 @@
     <base href="../../../"> <!-- needed to point back to top level... not sure why though-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.2/css/all.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="pages/blinky_light_thing/blt_assets/blt_css/style.css">
 </head>
 <content class="prove">
     <p>
@@ -14,7 +14,7 @@
         The BLT is blinking out the encoded UID of your attestation.  That same UID has been passed to the verification tool to use as a baseline to detect against.  By plotting the sample against the expected value we are able to determine if the decoded message (that which is blinked) matches the encoded message (that which is known). Before the BLT begins the message it blinks the red LED three times to indicate the start of a transmission (this helps us sync up the timing).  When we plot the blinks over time it looks like this:
     </p>
     <br>
-    <img src="pages/blinky_light_thing/blt_img/sample_output.png" alt="output" width="800">
+    <img src="pages/blinky_light_thing/blt_assets/blt_img/sample_output.png" alt="output" width="725">
     <br>
     <p>From time to time there will be false positives, where the vectorscope detects the light when it wasn't on or vice versa. We are still fine tuning the verification process, but we believe that any message with a match rate of greater than 75% can safely be considered to be legitimate</p>
 </content>
