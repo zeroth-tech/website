@@ -153,6 +153,7 @@ h2 {
   padding: 20px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
   background-color: #222;
 }
@@ -174,6 +175,9 @@ h2 {
   width: 4em;
   height: 4em;
   margin-bottom: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 footer {
@@ -352,22 +356,47 @@ footer {
 .our-thesis,
 #our-mission,
 #our-approach {
-  background-color: #222;
-  padding: 30px;
-  text-align: center;
-  margin-bottom: 40px;
-  word-wrap: break-word;
-  /* Added word wrap */
-  overflow-wrap: break-word;
-  /* Added for better browser support */
+  background-color: #1a1a1a;
+  padding: 60px 30px;
+  margin-bottom: 60px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.our-thesis h2,
+#our-mission h2,
+#our-approach h2 {
+  font-size: 36px;
+  color: #3399FF;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .our-thesis p,
 #our-mission p,
 #our-approach p {
-  font-size: 16px;
-  line-height: 1.6;
-  margin-bottom: 15px;
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.highlight-text {
+  color: #3399FF;
+  font-weight: 600;
+}
+
+.plain-english {
+  background-color: #2a2a2a;
+  border-left: 4px solid #3399FF;
+  padding: 20px;
+  margin-top: 30px;
+  font-style: italic;
+  font-size: 20px;
+  color: #e0e0e0;
 }
 
 /* Comment out section icons */
@@ -385,15 +414,10 @@ footer {
   /* Adjust the height as needed */
 }
 
-.plain-english {
-  color: #3399FF;
-  font-weight: bold;
-  font-style: italic;
-}
-
 .approach-diagram {
   max-width: 100%;
-  margin: 0 auto 20px;
+  margin: 40px auto;
+  text-align: center;
 }
 
 .approach-diagram img {
@@ -502,6 +526,15 @@ footer {
   /* Set the text color to blue */
 }
 
+.logo {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.logo.visible {
+  opacity: 1;
+}
+
 /* Media query for mobile devices */
 @media (max-width: 768px) {
   nav {
@@ -541,6 +574,26 @@ footer {
   .our-thesis,
   #our-mission,
   #our-approach {
-    padding: 20px;
+    padding: 40px 20px;
+  }
+
+  .our-thesis h2,
+  #our-mission h2,
+  #our-approach h2 {
+    font-size: 28px;
+  }
+
+  .our-thesis p,
+  #our-mission p,
+  #our-approach p {
+    font-size: 16px;
+  }
+
+  .plain-english {
+    font-size: 18px;
+  }
+
+  .approach-diagram img {
+    width: 100%;
   }
 }
