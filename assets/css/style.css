@@ -36,6 +36,7 @@ nav {
   align-items: center;
   flex-wrap: wrap;
 }
+
 .logo_static {
   font-size: 32px;
   font-weight: 600;
@@ -151,8 +152,9 @@ h2 {
 }
 
 .features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
@@ -160,11 +162,14 @@ h2 {
 
 .feature {
   text-align: center;
-  width: 300px; /* Set a fixed width */
-  height: 250px; /* Set a fixed height */
-  border-radius: 10px; /* Rounded corners */
-  overflow: hidden; /* Ensure content fits within rounded corners */
-  transition: all 0.3s ease; /* Smooth transition */
+  width: 300px;
+  height: auto;
+  /* Changed from fixed height to auto */
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  padding: 20px;
+  /* Added padding for better spacing */
 }
 
 .feature i {
@@ -172,6 +177,7 @@ h2 {
   color: #3399FF;
   margin-bottom: 20px;
 }
+
 .project-icons {
   width: 4em;
   height: 4em;
@@ -359,64 +365,45 @@ footer {
   background-color: #2e70b2;
 }
 
-.our-thesis {
+.our-thesis,
+#our-mission,
+#our-approach {
   background-color: #222;
   padding: 30px;
   text-align: center;
   margin-bottom: 40px;
+  word-wrap: break-word;
+  /* Added word wrap */
+  overflow-wrap: break-word;
+  /* Added for better browser support */
 }
 
-.our-thesis p {
+.our-thesis p,
+#our-mission p,
+#our-approach p {
   font-size: 16px;
   line-height: 1.6;
   margin-bottom: 15px;
 }
+
+/* Commented out icons */
+/*
+.our-thesis h2 i,
+#our-mission h2 i,
+#our-approach h2 i {
+  display: none;
+}
+*/
 
 .logo img {
   height: 40px;
   /* Adjust the height as needed */
 }
 
-#our-mission {
-  background-color: #222;
-  padding: 30px;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-#our-mission h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
-}
-
-#our-mission p {
-  font-size: 16px;
-  line-height: 1.6;
-  margin-bottom: 15px;
-}
-
 .plain-english {
   color: #3399FF;
   font-weight: bold;
   font-style: italic;
-}
-
-#our-approach {
-  background-color: #222;
-  padding: 30px;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-#our-approach h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
-}
-
-#our-approach p {
-  font-size: 16px;
-  line-height: 1.6;
-  margin-bottom: 15px;
 }
 
 .approach-diagram {
@@ -442,61 +429,128 @@ footer {
 }
 
 .features-grid a:hover .feature {
-  background-color: #515155; /* Change background color on hover */
-  border: 1px solid #ccc; /* Optional: Add a border */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+  background-color: #515155;
+  /* Change background color on hover */
+  border: 1px solid #ccc;
+  /* Optional: Add a border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Optional: Add a shadow */
 }
+
 .our_name {
-  max-width: 800px; /* Set a maximum width for better readability */
-  margin: 60px auto; /* Center the div horizontally and add top/bottom margin */
-  padding: 20px; /* Add padding for spacing */
-  text-align: left; /* Ensure text is left-justified */
-  line-height: 1.6; /* Improve readability with line height */
-  color: #fff; /* Ensure text color is consistent */
-  background-color: #222; /* Optional: Add a background color for contrast */
-  border-radius: 10px; /* Optional: Add rounded corners */
+  max-width: 800px;
+  /* Set a maximum width for better readability */
+  margin: 60px auto;
+  /* Center the div horizontally and add top/bottom margin */
+  padding: 20px;
+  /* Add padding for spacing */
+  text-align: left;
+  /* Ensure text is left-justified */
+  line-height: 1.6;
+  /* Improve readability with line height */
+  color: #fff;
+  /* Ensure text color is consistent */
+  background-color: #222;
+  /* Optional: Add a background color for contrast */
+  border-radius: 10px;
+  /* Optional: Add rounded corners */
 }
 
 .our_name p {
-  margin-bottom: 20px; /* Adjust the value as needed */
+  margin-bottom: 20px;
+  /* Adjust the value as needed */
 }
 
 .our_name ol {
-  padding-left: 20px; /* Adjust the indentation */
-  margin-bottom: 20px; /* Add space below the list */
+  padding-left: 20px;
+  /* Adjust the indentation */
+  margin-bottom: 20px;
+  /* Add space below the list */
 }
 
 .citations {
-  margin-top: 40px; /* Add space above the citations section */
-  padding: 20px; /* Add padding for spacing */
-  background-color: #222; /* Background color for contrast */
-  border-radius: 10px; /* Optional: Add rounded corners */
-  color: #fff; /* Ensure text color is white for visibility */
+  margin-top: 40px;
+  /* Add space above the citations section */
+  padding: 20px;
+  /* Add padding for spacing */
+  background-color: #222;
+  /* Background color for contrast */
+  border-radius: 10px;
+  /* Optional: Add rounded corners */
+  color: #fff;
+  /* Ensure text color is white for visibility */
 }
 
 .citations h2 {
-  margin-bottom: 20px; /* Space below the heading */
-  color: #fff; /* Ensure heading text color is white */
+  margin-bottom: 20px;
+  /* Space below the heading */
+  color: #fff;
+  /* Ensure heading text color is white */
 }
 
 .citations ul {
-  list-style-type: none; /* Remove default list styling */
-  padding-left: 0; /* Remove default padding */
+  list-style-type: none;
+  /* Remove default list styling */
+  padding-left: 0;
+  /* Remove default padding */
 }
 
 .citations li {
-  margin-bottom: 10px; /* Space between list items */
+  margin-bottom: 10px;
+  /* Space between list items */
 }
 
 .citations a {
-  color: #3399FF; /* Use the same blue color */
-  text-decoration: none; /* Remove underline from links */
+  color: #3399FF;
+  /* Use the same blue color */
+  text-decoration: none;
+  /* Remove underline from links */
 }
 
 .citations a:hover {
-  text-decoration: underline; /* Underline links on hover for clarity */
+  text-decoration: underline;
+  /* Underline links on hover for clarity */
 }
 
 .our_name h1 {
-  color: #3399FF; /* Set the text color to blue */
+  color: #3399FF;
+  /* Set the text color to blue */
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .features-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feature {
+    width: 90%;
+    /* Adjust width for mobile */
+    max-width: 300px;
+    /* Maintain maximum width */
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  .hero h1 {
+    font-size: 24px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .our-thesis,
+  #our-mission,
+  #our-approach {
+    padding: 20px;
+  }
 }
