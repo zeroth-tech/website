@@ -36,15 +36,6 @@ nav {
   align-items: center;
 }
 
-.logo {
-  margin-bottom: 20px;
-}
-
-.logo img {
-  height: 40px;
-  /* Adjust the height as needed */
-}
-
 nav ul {
   display: flex;
   list-style: none;
@@ -52,10 +43,25 @@ nav ul {
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+nav ul.visible {
+  opacity: 1;
 }
 
 nav ul li {
   margin: 0 10px;
+}
+
+.logo {
+  margin-bottom: 20px;
+}
+
+.logo img {
+  height: 40px;
+  /* Adjust the height as needed */
 }
 
 nav ul li a {
@@ -535,16 +541,13 @@ footer {
   opacity: 1;
 }
 
-/* Mobile-specific styles */
+/* Media query for mobile devices */
 @media (max-width: 768px) {
-  header {
-    padding: 10px;
-  }
-
   nav {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding: 0 20px;
   }
 
   .logo {
@@ -552,63 +555,31 @@ footer {
   }
 
   nav ul {
-    display: none;
-    /* Hide by default on mobile */
     flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
-    position: absolute;
-    top: 100%;
+    justify-content: flex-end;
+    position: fixed;
+    top: 80px;
     left: 0;
+    right: 0;
     background-color: rgba(0, 0, 0, 0.8);
-    padding: 10px 0;
-  }
-
-  nav ul.show {
-    display: flex;
+    padding: 10px 20px;
+    z-index: 998;
   }
 
   nav ul li {
-    margin: 5px 10px;
+    margin: 0 5px;
   }
 
-  .features-grid {
-    justify-content: center;
-  }
-
-  .feature {
-    width: 90%;
-    max-width: 300px;
-  }
-}
-
-/* Media query for mobile devices */
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-  }
-
-  .logo {
-    margin-bottom: 15px;
-  }
-
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  nav ul li {
-    margin: 10px 0;
+  nav ul li a {
+    font-size: 14px;
+    padding: 5px;
   }
 
   .feature {
-    width: 90%;
+    width: 100%;
     max-width: 300px;
     height: auto;
-    /* Allow height to adjust based on content */
     min-height: 300px;
-    /* Ensure a minimum height */
   }
 
   .hero h1 {
@@ -643,5 +614,12 @@ footer {
 
   .approach-diagram img {
     width: 100%;
+  }
+}
+
+/* Media query for wider screens */
+@media (min-width: 769px) {
+  nav ul {
+    justify-content: center;
   }
 }
