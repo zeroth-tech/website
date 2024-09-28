@@ -219,7 +219,7 @@ footer {
 
 #cta {
   background-color: #1f1f1f;
-  padding: 80px 0;
+  padding: 60px 0;
   text-align: center;
   position: relative;
 }
@@ -228,16 +228,35 @@ footer {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #cta h2 {
-  font-size: 40px;
-  margin-bottom: 40px;
+  font-size: 24px;
+  color: var(--text-color);
+  text-transform: none;
+  letter-spacing: normal;
+  margin-bottom: 20px;
 }
 
 #cta .btn {
-  font-size: 20px;
-  padding: 16px 40px;
+  font-size: 16px;
+  padding: 12px 30px;
+}
+
+.cta-btn-bottom {
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.cta-btn-bottom:hover {
+  background-color: var(--primary-color);
+  color: var(--text-color);
 }
 
 #typed {
@@ -398,4 +417,30 @@ footer {
   nav ul {
     justify-content: center;
   }
+}
+
+.cta-btn {
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.cta-btn:hover {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+.cta-btn-bottom {
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.cta-btn-bottom:hover {
+  background-color: var(--primary-color);
+  color: var(--text-color);
 }
