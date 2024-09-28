@@ -13,6 +13,7 @@ html {
 }
 
 body {
+  font-family: 'Poppins', sans-serif;
   font-family: 'Outfit', serif;
   background-color: #111;
   color: #fff;
@@ -354,17 +355,12 @@ footer {
 
 .our-thesis,
 #our-mission,
-#our-approach,
-.our_name,
-.citations {
+#our-approach {
   background-color: #1a1a1a;
   padding: 60px 30px;
   margin-bottom: 60px;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .our-thesis h2,
