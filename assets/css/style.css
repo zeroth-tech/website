@@ -367,12 +367,16 @@ footer {
   margin-bottom: 60px;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .our-thesis h2,
 #our-mission h2,
-#our-approach h2 {
-  font-size: 36px;
+#our-approach h2,
+#features h2 {
+  font-size: 28px;
   color: #3399FF;
   margin-bottom: 30px;
   text-transform: uppercase;
@@ -401,8 +405,11 @@ footer {
   padding: 20px;
   margin-top: 30px;
   font-style: italic;
-  font-size: 20px;
+  font-size: 18px;
   color: #e0e0e0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Comment out section icons */
@@ -544,26 +551,21 @@ footer {
 /* Media query for mobile devices */
 @media (max-width: 768px) {
   nav {
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding: 0 20px;
+    padding: 10px 0;
   }
 
   .logo {
-    margin-bottom: 0;
+    margin-bottom: 10px;
   }
 
   nav ul {
     flex-direction: row;
-    justify-content: flex-end;
-    position: fixed;
-    top: 80px;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 10px 20px;
-    z-index: 998;
+    justify-content: center;
+    position: static;
+    background-color: transparent;
+    padding: 0;
   }
 
   nav ul li {
