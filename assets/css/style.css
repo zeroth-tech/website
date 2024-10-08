@@ -410,6 +410,11 @@ footer {
   .approach-diagram img {
     width: 100%;
   }
+
+  .hero-subtitle {
+    font-size: 20px;
+    line-height: 1.4;
+  }
 }
 
 /* Media query for wider screens */
@@ -443,4 +448,9 @@ footer {
 .cta-btn-bottom:hover {
   background-color: var(--primary-color);
   color: var(--text-color);
+}
+
+.hero-subtitle {
+  padding-left: 20px;
+  padding-right: 20px;
 }
