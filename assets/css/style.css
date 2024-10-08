@@ -98,31 +98,8 @@ nav ul li a:hover {
   background-position: center;
 }
 
-#home.hero .hero-content {
-  max-width: 100%;
-  padding: 0 20px;
-}
-
-#home.hero h1 {
-  font-size: 32px;
-  margin-bottom: 20px;
-}
-
-#home.hero h2 {
-  font-size: 24px;
-  color: var(--text-color);
-  text-transform: none;
-  letter-spacing: normal;
-  line-height: 1.4;
-}
-
-#home.hero .hero-content img {
-  max-width: 100%;
-  height: auto;
-}
-
 .hero-content {
-  max-width: 100%;
+  max-width: 1000px;
   padding: 0 20px;
 }
 
@@ -131,22 +108,16 @@ nav ul li a:hover {
   margin-bottom: 20px;
 }
 
-.hero h2 {
-  font-size: 24px;
-  color: var(--text-color);
-  text-transform: none;
-  letter-spacing: normal;
-  line-height: 1.4;
-}
-
 .hero p {
   font-size: 20px;
   margin-bottom: 40px;
 }
 
-.hero-content img {
-  max-width: 100%;
-  height: auto;
+.hero h2 {
+  font-size: 24px;
+  color: var(--text-color);
+  text-transform: none;
+  letter-spacing: normal;
 }
 
 .btn {
@@ -419,13 +390,8 @@ footer {
     font-size: 24px;
   }
 
-  .hero h2 {
-    font-size: 18px;
-  }
-
-  .hero-content img {
-    max-width: 100%;
-    height: auto;
+  .hero p {
+    font-size: 16px;
   }
 
   .our-thesis,
@@ -477,14 +443,4 @@ footer {
 .cta-btn-bottom:hover {
   background-color: var(--primary-color);
   color: var(--text-color);
-}
-
-@media (max-width: 480px) {
-  .hero h1 {
-    font-size: 20px;
-  }
-
-  .hero h2 {
-    font-size: 16px;
-  }
 }
