@@ -414,6 +414,10 @@ footer {
   .hero-subtitle {
     font-size: 20px;
     line-height: 1.4;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
 
@@ -453,4 +457,6 @@ footer {
 .hero-subtitle {
   padding-left: 20px;
   padding-right: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
