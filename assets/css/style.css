@@ -1,6 +1,12 @@
-/* style.css */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+:root {
+  --primary-color: #3399FF;
+  --background-color: #111;
+  --text-color: #fff;
+  --section-bg-color: #1a1a1a;
+  --feature-bg-color: #222;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Outfit:wght@100..900&display=swap');
 
 html {
   scroll-behavior: smooth;
@@ -13,10 +19,9 @@ html {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  font-family: 'Outfit', serif;
-  background-color: #111;
-  color: #fff;
+  font-family: 'Outfit', 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 header {
@@ -32,45 +37,23 @@ header {
 
 nav {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  flex-wrap: wrap;
-}
-.logo_static {
-  font-size: 32px;
-  font-weight: 600;
-}
-
-.logo {
-  font-size: 32px;
-  font-weight: 600;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.logo.show {
-  opacity: 1;
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 nav ul {
   display: flex;
   list-style: none;
-  flex-wrap: wrap;
   justify-content: center;
-  margin-top: 20px;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+nav ul.visible {
+  opacity: 1;
 }
 
 nav ul li {
@@ -78,13 +61,29 @@ nav ul li {
 }
 
 nav ul li a {
-  color: #fff;
+  color: var(--text-color);
   text-decoration: none;
   transition: color 0.3s;
+  font-size: 16px;
+  padding: 5px 10px;
 }
 
 nav ul li a:hover {
-  color: #3399FF;
+  color: var(--primary-color);
+}
+
+.logo {
+  margin-bottom: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.logo.visible {
+  opacity: 1;
+}
+
+.logo img {
+  height: 40px;
 }
 
 .hero {
@@ -93,6 +92,7 @@ nav ul li a:hover {
   align-items: center;
   justify-content: center;
   text-align: center;
+  /* background-image: url('/assets/img/bg5.png'); */
   background-image: url('/assets/img/bg.jpg');
   background-size: cover;
   background-position: center;
@@ -113,10 +113,17 @@ nav ul li a:hover {
   margin-bottom: 40px;
 }
 
+.hero h2 {
+  font-size: 24px;
+  color: var(--text-color);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
 .btn {
   display: inline-block;
-  background-color: #3399FF;
-  color: #fff;
+  background-color: var(--primary-color);
+  color: var(--text-color);
   padding: 12px 30px;
   border-radius: 30px;
   text-decoration: none;
@@ -134,25 +141,25 @@ section {
   transition: opacity 0.5s, transform 0.5s;
 }
 
-section:first-child {
-  opacity: 1;
-  transform: translateY(0);
-}
-
+section:first-child,
 section.animate {
   opacity: 1;
   transform: translateY(0);
 }
 
 h2 {
-  font-size: 32px;
+  font-size: 28px;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
@@ -160,30 +167,48 @@ h2 {
 
 .feature {
   text-align: center;
-  width: 300px; /* Set a fixed width */
-  height: 250px; /* Set a fixed height */
-  border-radius: 10px; /* Rounded corners */
-  overflow: hidden; /* Ensure content fits within rounded corners */
-  transition: all 0.3s ease; /* Smooth transition */
-}
-
-.feature i {
-  font-size: 40px;
-  color: #3399FF;
-  margin-bottom: 20px;
-}
-.project-icons {
-  width: 4em;
-  height: 4em;
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--feature-bg-color);
 }
 
 .feature h3 {
-  font-size: 22px;
+  font-size: 24px;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+.feature .subtitle {
+  font-size: 14px;
   margin-bottom: 10px;
+  font-style: italic;
+  color: #a0a0a0;
+  line-height: 1.4;
+  font-weight: 300;
 }
 
 .feature p {
   font-size: 16px;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-icons {
+  width: 4em;
+  height: 4em;
+  margin-bottom: 15px;
+  display: block;
+  margin: 0 auto 15px;
 }
 
 footer {
@@ -194,234 +219,94 @@ footer {
 
 #cta {
   background-color: #1f1f1f;
-  padding: 80px 0;
+  padding: 60px 0;
   text-align: center;
   position: relative;
-}
-
-#cta::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* background-image: url(''); */
-  background-size: cover;
-  background-position: center;
-  opacity: 0.3;
-  z-index: -1;
 }
 
 .cta-content {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #cta h2 {
-  font-size: 40px;
-  margin-bottom: 40px;
+  font-size: 24px;
+  color: var(--text-color);
+  text-transform: none;
+  letter-spacing: normal;
+  margin-bottom: 20px;
 }
 
 #cta .btn {
-  font-size: 20px;
-  padding: 16px 40px;
-}
-
-.template-carousel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 30px;
-  margin-top: 40px;
-}
-
-.template-item {
-  width: 300px;
-  height: 200px;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
-}
-
-.template-item:hover {
-  transform: translateY(-5px);
-}
-
-.template-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s;
-}
-
-.template-item:hover img {
-  transform: scale(1.1);
-}
-
-.template-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.template-item:hover .template-overlay {
-  opacity: 1;
-}
-
-.template-overlay h3 {
-  color: #fff;
-  font-size: 22px;
-  margin-bottom: 10px;
-}
-
-.template-overlay .btn {
   font-size: 16px;
-  padding: 8px 20px;
+  padding: 12px 30px;
+}
+
+.cta-btn-bottom {
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.cta-btn-bottom:hover {
+  background-color: var(--primary-color);
+  color: var(--text-color);
 }
 
 #typed {
-  color: #3399FF;
+  color: var(--primary-color);
   display: inline-block;
-  /* Ensure the typed text is inline */
   white-space: nowrap;
-  /* Prevent line wrapping */
   overflow: hidden;
-  /* Hide any overflowing text */
   vertical-align: top;
-  /* Align the typed text with the top of the heading */
 }
 
-.padding-nb {
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
+.our-thesis,
+#our-mission,
+#our-approach {
+  background-color: var(--section-bg-color);
+  padding: 60px 30px;
+  margin-bottom: 60px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.padding-nt {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-
-.page-404-text-grid {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+.our-thesis p,
+#our-mission p,
+#our-approach p {
+  font-size: 18px;
+  line-height: 1.8;
   margin-bottom: 20px;
 }
 
-.page-404-text-content {
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-.a-styled {
-  color: #7abdff;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.a-styled:hover {
-  color: #3399FF;
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #222;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #3399FF;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #2e70b2;
-}
-
-.our-thesis {
-  background-color: #222;
-  padding: 30px;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.our-thesis p {
-  font-size: 16px;
-  line-height: 1.6;
-  margin-bottom: 15px;
-}
-
-.logo img {
-  height: 40px;
-  /* Adjust the height as needed */
-}
-
-#our-mission {
-  background-color: #222;
-  padding: 30px;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-#our-mission h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
-}
-
-#our-mission p {
-  font-size: 16px;
-  line-height: 1.6;
-  margin-bottom: 15px;
+.highlight-text {
+  color: var(--primary-color);
+  font-weight: 600;
 }
 
 .plain-english {
-  color: #3399FF;
-  font-weight: bold;
+  background-color: #2a2a2a;
+  border-left: 4px solid var(--primary-color);
+  padding: 20px;
+  margin-top: 30px;
   font-style: italic;
-}
-
-#our-approach {
-  background-color: #222;
-  padding: 30px;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-#our-approach h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
-}
-
-#our-approach p {
-  font-size: 16px;
-  line-height: 1.6;
-  margin-bottom: 15px;
+  font-size: 18px;
+  color: #e0e0e0;
 }
 
 .approach-diagram {
   max-width: 100%;
-  margin: 0 auto 20px;
+  margin: 40px auto;
+  text-align: center;
 }
 
 .approach-diagram img {
@@ -442,61 +327,136 @@ footer {
 }
 
 .features-grid a:hover .feature {
-  background-color: #515155; /* Change background color on hover */
-  border: 1px solid #ccc; /* Optional: Add a border */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
-}
-.our_name {
-  max-width: 800px; /* Set a maximum width for better readability */
-  margin: 60px auto; /* Center the div horizontally and add top/bottom margin */
-  padding: 20px; /* Add padding for spacing */
-  text-align: left; /* Ensure text is left-justified */
-  line-height: 1.6; /* Improve readability with line height */
-  color: #fff; /* Ensure text color is consistent */
-  background-color: #222; /* Optional: Add a background color for contrast */
-  border-radius: 10px; /* Optional: Add rounded corners */
+  background-color: #515155;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.our_name p {
-  margin-bottom: 20px; /* Adjust the value as needed */
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-.our_name ol {
-  padding-left: 20px; /* Adjust the indentation */
-  margin-bottom: 20px; /* Add space below the list */
+::-webkit-scrollbar-track {
+  background-color: #222;
 }
 
-.citations {
-  margin-top: 40px; /* Add space above the citations section */
-  padding: 20px; /* Add padding for spacing */
-  background-color: #222; /* Background color for contrast */
-  border-radius: 10px; /* Optional: Add rounded corners */
-  color: #fff; /* Ensure text color is white for visibility */
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 5px;
 }
 
-.citations h2 {
-  margin-bottom: 20px; /* Space below the heading */
-  color: #fff; /* Ensure heading text color is white */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #2e70b2;
 }
 
-.citations ul {
-  list-style-type: none; /* Remove default list styling */
-  padding-left: 0; /* Remove default padding */
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+
+  nav ul {
+    flex-direction: row;
+    justify-content: center;
+    position: static;
+    background-color: transparent;
+    padding: 0;
+  }
+
+  nav ul li {
+    margin: 0 5px;
+  }
+
+  nav ul li a {
+    font-size: 14px;
+    padding: 5px;
+  }
+
+  .feature {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    min-height: 300px;
+  }
+
+  .hero h1 {
+    font-size: 24px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .our-thesis,
+  #our-mission,
+  #our-approach {
+    padding: 40px 20px;
+  }
+
+  .our-thesis p,
+  #our-mission p,
+  #our-approach p,
+  .plain-english {
+    font-size: 16px;
+  }
+
+  .approach-diagram img {
+    width: 100%;
+  }
+
+  .hero-subtitle {
+    font-size: 20px;
+    line-height: 1.4;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 }
 
-.citations li {
-  margin-bottom: 10px; /* Space between list items */
+/* Media query for wider screens */
+@media (min-width: 769px) {
+  nav ul {
+    justify-content: center;
+  }
 }
 
-.citations a {
-  color: #3399FF; /* Use the same blue color */
-  text-decoration: none; /* Remove underline from links */
+.cta-btn {
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.citations a:hover {
-  text-decoration: underline; /* Underline links on hover for clarity */
+.cta-btn:hover {
+  background-color: var(--primary-color);
+  color: var(--text-color);
 }
 
-.our_name h1 {
-  color: #3399FF; /* Set the text color to blue */
+.cta-btn-bottom {
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.cta-btn-bottom:hover {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+.hero-subtitle {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
