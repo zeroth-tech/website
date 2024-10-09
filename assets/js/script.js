@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
       navUl.classList.add('visible');
     } else {
       logo.classList.remove('visible');
-      navUl.classList.remove('visible');
+      navUl.classList.add('visible');
     }
   }
 
