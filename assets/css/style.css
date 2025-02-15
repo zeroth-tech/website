@@ -105,7 +105,7 @@ nav ul li a:hover {
 
 .hero h1 {
   font-size: 32px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .hero p {
@@ -267,9 +267,7 @@ footer {
   vertical-align: top;
 }
 
-.our-thesis,
-#our-mission,
-#our-approach {
+.section-text {
   background-color: var(--section-bg-color);
   padding: 60px 30px;
   margin-bottom: 60px;
@@ -278,14 +276,25 @@ footer {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 
-.our-thesis p,
+.section-text p,
 #our-mission p,
 #our-approach p {
   font-size: 18px;
   line-height: 1.8;
   margin-bottom: 20px;
+  text-align: justify;
+}
+.section-text .center-highlight-text,
+.our-mission .center-highlight-text,
+.our-approach .center-highlight-text {
+  color: var(--primary-color);
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .highlight-text {
@@ -293,6 +302,13 @@ footer {
   font-weight: 600;
 }
 
+.underlined {
+  text-decoration: underline;
+}
+.diagram-container {
+  text-align: center;
+  margin: 2em 0;
+}
 .plain-english {
   background-color: #2a2a2a;
   border-left: 4px solid var(--primary-color);
@@ -394,13 +410,13 @@ footer {
     font-size: 16px;
   }
 
-  .our-thesis,
+  .section-text,
   #our-mission,
   #our-approach {
     padding: 40px 20px;
   }
 
-  .our-thesis p,
+  .section-text p,
   #our-mission p,
   #our-approach p,
   .plain-english {
@@ -460,3 +476,4 @@ footer {
   margin-left: 20px;
   margin-right: 20px;
 }
+
