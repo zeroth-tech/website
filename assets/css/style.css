@@ -8,8 +8,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Outfit:wght@100..900&display=swap');
 
-html {
-  scroll-behavior: smooth;
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
 }
 
 * {
@@ -22,6 +26,7 @@ body {
   font-family: 'Outfit', 'Poppins', sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
+  min-height: 100vh;
 }
 
 header {
@@ -471,5 +476,10 @@ footer {
   padding-right: 20px;
   margin-left: 20px;
   margin-right: 20px;
+}
+
+.section-text.animate {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 

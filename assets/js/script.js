@@ -27,10 +27,27 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', function () {
     updateHeaderVisibility();
 
+    // Get the hero section and first content section
+    const heroSection = document.querySelector('#home');
+    const firstContentSection = document.querySelector('#first-content');
+
+    if (heroSection && firstContentSection) {
+      const triggerPoint = window.innerHeight * 0.5; // 50% from top = 50% scrolled
+      const heroBottom = heroSection.getBoundingClientRect().bottom;
+      
+      if (heroBottom <= triggerPoint) {
+        firstContentSection.classList.add('animate');
+      } else {
+        firstContentSection.classList.remove('animate');
+      }
+    }
+
+    // Get the hero section and all sections
     const sections = document.querySelectorAll('section');
 
+    // For all sections following the first non-hero section, use your original logic.
     sections.forEach((section, index) => {
-      if (index === 0) return;
+      if (index < 2) return; // Skip hero and first section (handled above)
 
       const sectionTop = section.offsetTop;
       const sectionHeight = section.offsetHeight;
@@ -78,7 +95,31 @@ document.addEventListener('DOMContentLoaded', function () {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const target = this.getAttribute('href');
-      smoothScroll(target, 1250); // Adjust the duration (in milliseconds) to make the scroll slower or faster
+      smoothScroll(target, 1250); // You can adjust the duration as needed.
     });
   });
+
+  // Removed the Intersection Observer for the first section-text to allow the scroll event
+  // listener above to control the fade-in timing when scrolling past 75% of the home section.
+  /*
+  const observerOptions = {
+    root: null,
+    rootMargin: '-25% 0px 0px 0px', // Old setting triggered too early
+    threshold: 0
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  const firstSection = document.querySelector('.section-text');
+  if (firstSection) {
+    observer.observe(firstSection);
+  }
+  */
 });
