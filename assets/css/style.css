@@ -37,14 +37,16 @@ header {
 
 nav {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 nav ul {
   display: flex;
   list-style: none;
-  justify-content: center;
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
@@ -73,9 +75,9 @@ nav ul li a:hover {
 }
 
 .logo {
-  margin-bottom: 20px;
   opacity: 0;
   transition: opacity 0.3s ease;
+  order: -1;
 }
 
 .logo.visible {
