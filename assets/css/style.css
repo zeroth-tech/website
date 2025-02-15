@@ -93,7 +93,7 @@ nav ul li a:hover {
   justify-content: center;
   text-align: center;
   /* background-image: url('/assets/img/bg5.png'); */
-  background-image: url('/assets/img/bg.jpg');
+  background-image: url('../img/bg.jpg');
   background-size: cover;
   background-position: center;
 }
