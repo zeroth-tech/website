@@ -208,13 +208,15 @@ nav ul li a:hover {
 
 /* Buttons */
 .btn {
-  display: inline-block;
+  display: block;
   background-color: var(--primary-color);
   color: var(--text-color);
   padding: 12px 30px;
   border-radius: 30px;
   text-decoration: none;
   transition: background-color 0.3s;
+  margin: 0 auto;
+  width: fit-content;
 }
 
 .btn:hover {
