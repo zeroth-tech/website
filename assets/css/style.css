@@ -1,3 +1,6 @@
+/* Hi dad. I cleaned up the structure and removed like 200 lines.*/
+
+/* Variables */
 :root {
   --primary-color: #3399FF;
   --background-color: #111;
@@ -6,7 +9,9 @@
   --feature-bg-color: #222;
 }
 
+/* Imports */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Outfit:wght@100..900&display=swap');
+
 
 html, body {
   margin: 0;
@@ -16,10 +21,8 @@ html, body {
   position: relative;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -29,6 +32,31 @@ body {
   min-height: 100vh;
 }
 
+/* Typography */
+h2 {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Layout Components */
+section {
+  padding: 60px 0;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+section:first-child,
+section.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Navigation */
 header {
   background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
@@ -42,17 +70,21 @@ header {
 
 nav {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
 }
 
 nav ul {
   display: flex;
   list-style: none;
-  justify-content: center;
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
+  justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -77,10 +109,12 @@ nav ul li a:hover {
   color: var(--primary-color);
 }
 
+/* Logo */
 .logo {
-  margin-bottom: 20px;
   opacity: 0;
   transition: opacity 0.3s ease;
+  position: absolute;
+  left: 0;
 }
 
 .logo.visible {
@@ -91,12 +125,16 @@ nav ul li a:hover {
   height: 40px;
 }
 
+/* Hero Section */
 .hero {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  background-image: url('/assets/img/bg.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .hero-content {
@@ -121,42 +159,12 @@ nav ul li a:hover {
   letter-spacing: normal;
 }
 
-.btn {
-  display: inline-block;
-  background-color: var(--primary-color);
-  color: var(--text-color);
-  padding: 12px 30px;
-  border-radius: 30px;
-  text-decoration: none;
-  transition: background-color 0.3s;
+.hero-subtitle {
+  padding: 0 20px;
+  margin: 0 20px;
 }
 
-.btn:hover {
-  background-color: #2a73bb;
-}
-
-section {
-  padding: 60px 0;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.5s, transform 0.5s;
-}
-
-section:first-child,
-section.animate {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-h2 {
-  font-size: 28px;
-  text-align: center;
-  margin-bottom: 30px;
-  color: var(--primary-color);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
+/* Features Section */
 .features-grid {
   display: flex;
   flex-wrap: wrap;
@@ -171,14 +179,13 @@ h2 {
   width: 300px;
   height: 300px;
   border-radius: 10px;
-  overflow: hidden;
-  transition: all 0.3s ease;
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   background-color: var(--feature-bg-color);
+  transition: all 0.3s ease;
 }
 
 .feature h3 {
@@ -204,49 +211,24 @@ h2 {
   justify-content: center;
 }
 
-.project-icons {
-  width: 4em;
-  height: 4em;
-  margin-bottom: 15px;
+/* Buttons */
+.btn {
   display: block;
-  margin: 0 auto 15px;
-}
-
-footer {
-  background-color: #000;
-  padding: 20px;
-  text-align: center;
-}
-
-#cta {
-  background-color: #1f1f1f;
-  padding: 60px 0;
-  text-align: center;
-  position: relative;
-}
-
-.cta-content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#cta h2 {
-  font-size: 24px;
+  background-color: var(--primary-color);
   color: var(--text-color);
-  text-transform: none;
-  letter-spacing: normal;
-  margin-bottom: 20px;
-}
-
-#cta .btn {
-  font-size: 16px;
   padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  margin: 0 auto;
+  width: fit-content;
 }
 
+.btn:hover {
+  background-color: #2a73bb;
+}
+
+.cta-btn,
 .cta-btn-bottom {
   background-color: transparent;
   border: 2px solid var(--primary-color);
@@ -255,10 +237,12 @@ footer {
   transition: background-color 0.3s, color 0.3s;
 }
 
+.cta-btn:hover,
 .cta-btn-bottom:hover {
   background-color: var(--primary-color);
   color: var(--text-color);
 }
+
 
 #typed {
   color: var(--primary-color);
@@ -269,6 +253,7 @@ footer {
 }
 
 .section-text {
+
   background-color: var(--section-bg-color);
   padding: 60px 30px;
   margin-bottom: 60px;
@@ -279,6 +264,7 @@ footer {
   margin-right: auto;
   text-align: center;
 }
+
 
 .section-text p,
 #our-mission p,
@@ -349,7 +335,14 @@ footer {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Scrollbar styles */
+/* Footer */
+footer {
+  background-color: #000;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -367,7 +360,7 @@ footer {
   background-color: #2e70b2;
 }
 
-/* Media query for mobile devices */
+/* Media Queries */
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
@@ -417,6 +410,7 @@ footer {
     padding: 40px 20px;
   }
 
+
   .section-text p,
   #our-mission p,
   #our-approach p,
@@ -436,40 +430,30 @@ footer {
     margin-left: 10px;
     margin-right: 10px;
   }
+
+  .project-icons {
+    width: 4em;
+    height: 4em;
+    margin-bottom: 15px;
+    display: block;
+    margin: 0 auto 15px;
+  }
 }
 
-/* Media query for wider screens */
 @media (min-width: 769px) {
   nav ul {
     justify-content: center;
   }
 }
 
-.cta-btn {
-  background-color: transparent;
-  border: 2px solid var(--primary-color);
+#typed {
   color: var(--primary-color);
-  font-weight: 600;
-  transition: background-color 0.3s, color 0.3s;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: top;
 }
 
-.cta-btn:hover {
-  background-color: var(--primary-color);
-  color: var(--text-color);
-}
-
-.cta-btn-bottom {
-  background-color: transparent;
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
-  font-weight: 600;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.cta-btn-bottom:hover {
-  background-color: var(--primary-color);
-  color: var(--text-color);
-}
 
 .hero-subtitle {
   padding-left: 20px;
@@ -483,3 +467,11 @@ footer {
   transform: translateY(0) !important;
 }
 
+=======
+.project-icons {
+  width: 4em;
+  height: 4em;
+  margin-bottom: 15px;
+  display: block;
+  margin: 0 auto 15px;
+}

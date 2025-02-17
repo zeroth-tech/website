@@ -1,10 +1,24 @@
-entrypoint="index.html"
 hidden=[".config"]
-modules = ["web:v2-20230623-0b7a606"]
+modules = ["nodejs-20", "python-3.11", "web"]
 
 [nix]
-channel = "stable-23_11"
+channel = "stable-24_05"
 
 [deployment]
 publicDir = "/"
 deploymentTarget = "static"
+
+[workflows]
+runButton = "Run"
+
+[[workflows.workflow]]
+name = "Run"
+author = 17724980
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python -m http.server 8080 --bind 0.0.0.0"
+
+[[ports]]
+localPort = 8080
+externalPort = 80
