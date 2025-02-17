@@ -16,11 +16,15 @@
   <header>
     <nav>
       <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="./pages/our_name.html">Our Name</a></li>
-        <li><a href="https://zeroth-tech.github.io/blogs/">Our Writings</a></li>
-        <li><a href="./pages/vero/vero.html">Vero</a></li>
-        <li><a href="./pages/aesop/aesop.html">Aesop</a></li>
+        <div class="nav-row-1">
+          <li><a href="#home">Home</a></li>
+          <li><a href="./pages/our_name.html">Our Name</a></li>
+          <li><a href="https://zeroth-tech.github.io/blogs/">Our Writings</a></li>
+        </div>
+        <div class="nav-row-2">
+          <li><a href="./pages/vero/vero.html">Vero</a></li>
+          <li><a href="./pages/aesop/aesop.html">Aesop</a></li>
+        </div>
       </ul>
       <div class="logo">
         <img src="./assets/img/zeroth_logo.svg" alt="Zeroth Logo">
@@ -29,24 +33,21 @@
   </header>
 
   <main>
-    <section id="home" class="hero" style="font-family: poppins, sans-serif; background-image: url('./assets/img/bg.jpg'); background-size: cover; background-position: center; min-height: 75vh;">
+    <section id="intro" class="hero">
       <div class="hero-content">
-        <br><br>
         <h1><img src="./assets/img/zeroth_tech_logo.svg" alt="Zeroth Technology Logo" height="150" width="438"></h1>
         <br>
-        <h1>building foundations of<br> <span id="typed"></span></h1>
-        <h1>for our digital world</h1>
+        <h1>building foundations of<br> <span id="typed"></span><br>for our digital world</h1>
       </div>
     </section>
-  </br></br>
+    </br></br>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
-    <section id="first-content" class="section-text" style="opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease;">
-    
+    <section id="vision" class="text-section">
       <h2>How do we Trust in the Digital Age</h2>
       
       <p>
-        Humanity is no longer at the crossroads between the physical and the digital &mdash; 
+        Humanity is no longer at the crossroads between the physical and the digital &mdash; </br>
         <span class="center-highlight-text">we are in the convergence.</span>
       </p>
       
@@ -103,7 +104,7 @@
     </section>
     
 
-    <section class="section-text">
+    <section id="principles" class="text-section">
       <h2>Our Principles</h2>
       <p>
         Isaac Asimov told a story about how three simple hierarchical rules could govern the interobjective relationship
@@ -118,11 +119,11 @@
       </p>
 
     </section>
-    <section class="section-text">
+    <section id="approach" class="text-section">
       <h2>Our Approach</h2>
       <p>Our teams work across a variety of core technology development, product, and services use cases at the 
         intersection of trust and emergent technologies including blockchain and AI.</p>
-      <div class="approach-diagram">
+      <div class="diagram-container">
         <img src="./assets/img/zeroth-structure.png" alt="Zeroth Technology approach Diagram">
       </div>
     </section>
@@ -133,8 +134,10 @@
       <div class="features-grid">
         <a href="https://github.com/zeroth-tech/settlement-solutions" style="text-decoration: none; color: inherit;">
           <div class="feature">
-            <img src="./assets/img/CSER.svg" alt="CSER icon" class="project-icons">
-            <h3>CSER</h3>
+            <div class="title-row">
+              <h3>CSER</h3>
+              <img src="./assets/icons/cser-icon.svg" alt="CSER icon" class="project-icons">
+            </div>
             <div class="subtitle">Confidential Settlements with Embeddable Rights</div>
             <p>Describing supply chain events mathematically so that claims on products can be settled in a shared
               execution environment.</p>
@@ -142,17 +145,21 @@
         </a>
         <a href="./pages/aesop/aesop.html" style="text-decoration: none; color: inherit;">
           <div class="feature">
-            <img src="./assets/img/ant.svg" alt="ant icon" class="project-icons">
-            <h3>AESOP</h3>
-            <div class="subtitle">Using AI to optimize knowledge documents for AI</div>
+            <div class="title-row">
+              <h3>AESOP</h3>
+              <img src="./assets/icons/aesop-icon.svg" alt="AESOP icon" class="project-icons">
+            </div>
+              <div class="subtitle">Using AI to optimize knowledge documents for AI</div>
             <p>Our knowledge documents represent what we know and how we operate. Misinterpretation by a LLM can be
               dangerous. Aesop helps prevent that.</p>
           </div>
         </a>
         <a href="./pages/vero/vero.html" style="text-decoration: none; color: inherit;">
           <div class="feature">
-            <img src="./assets/img/led.svg" alt="LED icon" class="project-icons">
-            <h3>Vero</h3>
+            <div class="title-row">
+              <h3>Vero</h3>
+              <img src="./assets/icons/vero-icon.svg" alt="Vero icon" class="project-icons">
+            </div>
             <div class="subtitle">Ensuring Trust and Integrity in Real-Time Digital Interactions</div>
             <p>Encoding optical messages into live streaming video for proof of contemporaneous authenticity</p>
           </div>

@@ -27,33 +27,18 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', function () {
     updateHeaderVisibility();
 
-    // Get the hero section and first content section
-    const heroSection = document.querySelector('#home');
-    const firstContentSection = document.querySelector('#first-content');
-
-    if (heroSection && firstContentSection) {
-      const triggerPoint = window.innerHeight * 0.5; // 50% from top = 50% scrolled
-      const heroBottom = heroSection.getBoundingClientRect().bottom;
-      
-      if (heroBottom <= triggerPoint) {
-        firstContentSection.classList.add('animate');
-      } else {
-        firstContentSection.classList.remove('animate');
-      }
-    }
-
-    // Get the hero section and all sections
+    // Get all sections
     const sections = document.querySelectorAll('section');
 
-    // For all sections following the first non-hero section, use your original logic.
-    sections.forEach((section, index) => {
-      if (index < 2) return; // Skip hero and first section (handled above)
+    sections.forEach((section) => {
+      if (section.classList.contains('hero')) return; // Skip hero section
 
       const sectionTop = section.offsetTop;
       const sectionHeight = section.offsetHeight;
       const scrollPosition = window.pageYOffset;
 
-      if (scrollPosition > sectionTop - window.innerHeight + sectionHeight / 2) {
+      // Add animate class when section is 25% visible
+      if (scrollPosition > sectionTop - window.innerHeight + sectionHeight / 4) {
         section.classList.add('animate');
       }
     });
