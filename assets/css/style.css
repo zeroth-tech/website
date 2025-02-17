@@ -1,6 +1,7 @@
-/* Hi dad. I cleaned up the structure and removed like 200 lines.*/
-
-/* Variables */
+/* GLOBAL VARIABLES:
+  - These variables (such as --primary-color, --background-color, etc.)
+    are used throughout the stylesheet.
+*/
 :root {
   --primary-color: #3399FF;
   --background-color: #111;
@@ -9,10 +10,26 @@
   --feature-bg-color: #222;
 }
 
-/* Imports */
+/* CUSTOM SCROLLBAR (Webkit): */
+::-webkit-scrollbar { /*Adjusts the width of the browser's native scrollbar.*/
+  width: 10px;
+}
+::-webkit-scrollbar-track { /*Styles the area the scrollbar slides within.*/
+  background-color: #222;
+}
+::-webkit-scrollbar-thumb { /*Styles the draggable part of the scrollbar.*/
+  background-color: var(--primary-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover { /*Styles the thumb when hovered over.*/
+  background-color: #2e70b2;
+}
+
+/* FONT IMPORT */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Outfit:wght@100..900&display=swap');
 
-
+/* BASIC PAGE RESET: Removes default margins/paddings.  Ensures proper layout and prevents horizontal scrolling. */
 html, body {
   margin: 0;
   padding: 0;
@@ -25,7 +42,7 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
+body { /* BODY STYLES: Sets the primary font family and background, and ensures a full viewport height.*/
   font-family: 'Outfit', 'Poppins', sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
@@ -33,6 +50,9 @@ body {
 }
 
 /* Typography */
+h1 {
+  font-size: 32px;
+}
 h2 {
   font-size: 28px;
   text-align: center;
@@ -43,22 +63,26 @@ h2 {
 }
 
 /* Layout Components */
-section {
+section { /* SECTION BASE STYLES: Applies to all <section> elements. Sections start hidden/offset for scroll-triggered animations. The .animate class (added via JS) will reveal them.*/
   padding: 60px 0;
   opacity: 0;
   transform: translateY(50px);
-  transition: opacity 0.5s, transform 0.5s;
+  transition: opacity 0.8s, transform 0.8s;
 }
 
-section:first-child,
-section.animate {
+section.hero { /* HERO SECTION: Overrides the base section styles to display the hero section immediately.*/
+  opacity: 1;
+  transform: none;
+}
+
+section.animate { /* ANIMATED SECTIONS: When the .animate class is added, sections animate into view.*/ 
   opacity: 1;
   transform: translateY(0);
 }
 
 /* Navigation */
-header {
-  background-color: rgba(0, 0, 0, 0.8);
+header { /* HEADER STYLES: Fixed header with a blurred background. Remains visible at the top while scrolling.*/*/
+  background-color: var(--background-color);
   backdrop-filter: blur(10px);
   padding: 20px;
   position: fixed;
@@ -68,7 +92,7 @@ header {
   z-index: 999;
 }
 
-nav {
+nav { /* NAVIGATION: Centers the navigation bar and sets up its basic flexbox layout.*/
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -78,7 +102,7 @@ nav {
   position: relative;
 }
 
-nav ul {
+nav ul { /* NAVIGATION LIST: The <ul> starts with opacity:0 and is made visible by adding the .visible class via JS.*/
   display: flex;
   list-style: none;
   flex-wrap: wrap;
@@ -89,15 +113,15 @@ nav ul {
   transition: opacity 0.3s ease;
 }
 
-nav ul.visible {
+nav ul.visible { /* NAVIGATION VISIBILITY: The <ul> becomes visible when the .visible class is added.*/
   opacity: 1;
 }
 
-nav ul li {
+nav ul li { /* NAVIGATION LIST ITEMS: Sets the margin for each list item.*/
   margin: 0 10px;
 }
 
-nav ul li a {
+nav ul li a { /* NAVIGATION LINKS: Styles the <a> elements inside the navigation list.*/
   color: var(--text-color);
   text-decoration: none;
   transition: color 0.3s;
@@ -105,67 +129,124 @@ nav ul li a {
   padding: 5px 10px;
 }
 
-nav ul li a:hover {
-  color: var(--primary-color);
-}
-
-/* Logo */
-.logo {
+/* Logo class */
+.logo { /* LOGO: Hidden by default and later shown when .visible is added.*/
   opacity: 0;
   transition: opacity 0.3s ease;
   position: absolute;
   left: 0;
 }
 
-.logo.visible {
+.logo.visible { /* LOGO VISIBILITY: The logo becomes visible when the .visible class is added.*/
   opacity: 1;
 }
 
-.logo img {
+.logo img {/* LOGO IMAGE: Sets the height of the logo image.*/  
   height: 40px;
 }
 
-/* Hero Section */
-.hero {
+/* Hero class */
+.hero { /* HERO SECTION: Fullscreen layout with a background image. Centered content within the hero section.*/
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-image: url('/assets/img/bg.jpg');
+  background-image: url('../img/bg.jpg');
   background-size: cover;
   background-position: center;
 }
 
-.hero-content {
+.hero-content { /* HERO CONTENT: Wraps hero text and images; limits content width.*/
   max-width: 1000px;
   padding: 0 20px;
 }
 
-.hero h1 {
-  font-size: 32px;
-  /* margin-bottom: 20px; */
-}
-
-.hero p {
+.hero p { /* HERO PARAGRAPH: Styles paragraphs inside the hero section.*/
   font-size: 20px;
   margin-bottom: 40px;
 }
 
-.hero h2 {
-  font-size: 24px;
-  color: var(--text-color);
-  text-transform: none;
-  letter-spacing: normal;
+#typed {  /* TYPED.JS TARGET: Styles the element targeted by Typed.js; animates the key words.*/
+  color: var(--primary-color);
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: top;
 }
 
-.hero-subtitle {
-  padding: 0 20px;
-  margin: 0 20px;
+/* Text-Section class
+ - Used for major content sections (e.g. Vision, Principles, Approach).*/
+.text-section { /* TEXT-SECTION: Styles the text section with a background color, padding, margin, border radius, box shadow, and maximum width.*/  
+  background-color: var(--section-bg-color);
+  padding: 20px;
+  margin-bottom: 60px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s, transform 0.8s;
 }
 
-/* Features Section */
-.features-grid {
+.text-section.animate { /* TEXT-SECTION ANIMATE: Applied when the section scrolls into view. This triggers the fade-in animation.*/
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.text-section p { /* TEXT-SECTION PARAGRAPHS: Styles the paragraphs with a font size, line height, margin, text alignment, opacity, and transform.*/
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  text-align: justify;
+  opacity: 0; 
+  transform: translateY(20px); 
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.text-section .center-highlight-text { /* CENTER-HIGHLIGHT TEXT: Emphasizes specific text within a content section.*/
+  color: var(--primary-color);
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  margin: 0 auto;
+}
+.text-section.animate p {/* animation for paragraphs within animated sections */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.highlight-text { /* HIGHLIGHT TEXT: Styles the highlighted text with a primary color and bold font weight.*/
+  color: var(--primary-color);
+  font-weight: 600;
+}
+/* Diagrams */
+.diagram-container { /* DIAGRAM CONTAINER: Centers and spaces diagrams/illustrations.*/
+  text-align: center;
+  max-width: 100%;
+  height: auto;
+  margin: 40px auto;
+}
+.diagram-container img { /* DIAGRAM IMAGE: Ensures the image scales correctly within its container.*/
+  max-width: 100%;
+  height: auto;
+}
+
+.plain-english { /* PLAIN ENGLISH BLOCK: Styles the stylized block for highlighted quotes or content.*/
+  background-color: #2a2a2a;
+  border-left: 4px solid var(--primary-color);
+  padding: 5px;
+  margin-top: 10px;
+  font-style: italic;
+  font-size: 18px;
+  color: #e0e0e0;
+}
+
+/* Features Section - projects we are excited about*/
+.features-grid { /* FEATURES GRID: Displays project/feature cards in a responsive grid.*/
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -173,8 +254,13 @@ nav ul li a:hover {
   max-width: 1200px;
   margin: 0 auto;
 }
+.features-grid a:hover .feature { /* FEATURE HOVER EFFECT: Applies visual effects when hovering over a project card.*/
+  background-color: #515155;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-.feature {
+.feature {  /* FEATURE: Styles the feature cards with a text alignment, width, height, border radius, and padding.*/
   text-align: center;
   width: 300px;
   height: 300px;
@@ -186,15 +272,35 @@ nav ul li a:hover {
   justify-content: space-between;
   background-color: var(--feature-bg-color);
   transition: all 0.3s ease;
+  position: relative;
 }
-
-.feature h3 {
-  font-size: 24px;
-  margin-bottom: 5px;
-  color: #ffffff;
+.feature h3 {   /* FEATURE TITLE: Styles the title text inside feature cards.*/
+  margin: 0;
+  text-align: left;
+  font-size: 2rem;
+  font-weight: bold;
 }
-
-.feature .subtitle {
+.feature p {    /* FEATURE PARAGRAPH: Styles the paragraph text inside feature cards.*/
+  font-size: 16px;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.feature .title-row {   /* FEATURE TITLE ROW: Displays the feature title with the icon.*/
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 25%;
+  margin-bottom: 10px;
+  padding: 0 15px;
+}
+.feature .project-icons {   /* FEATURE ICONS: Ensures consistent sizing and spacing for icons within features.*/
+  margin-left: 10px;
+  height: 50px;
+  width: auto;
+}
+.feature .subtitle {   /* FEATURE SUBTITLE: Styles the subtitle text inside feature cards.*/
   font-size: 14px;
   margin-bottom: 10px;
   font-style: italic;
@@ -202,17 +308,16 @@ nav ul li a:hover {
   line-height: 1.4;
   font-weight: 300;
 }
-
-.feature p {
-  font-size: 16px;
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.project-icons { /* PROJECT ICONS: Styles the project icons with a width, height, margin, display, and margin.*/ 
+  width: 4em;
+  height: 4em;
+  margin-bottom: 15px;
+  display: block;
+  margin: 0 auto 15px;
 }
 
 /* Buttons */
-.btn {
+.btn { /* BUTTON: Styles the button with a display, background color, text color, padding, border radius, text decoration, transition, margin, width, and fit content.*/
   display: block;
   background-color: var(--primary-color);
   color: var(--text-color);
@@ -224,9 +329,10 @@ nav ul li a:hover {
   width: fit-content;
 }
 
-.btn:hover {
+.btn:hover {  /* BUTTON HOVER: Darkens the button background on hover.*/
   background-color: #2a73bb;
 }
+
 
 .cta-btn,
 .cta-btn-bottom {
@@ -238,150 +344,58 @@ nav ul li a:hover {
 }
 
 .cta-btn:hover,
-.cta-btn-bottom:hover {
+.cta-btn-bottom:hover { /* CTA BUTTON HOVER: Reverses the color scheme when hovered.*/
   background-color: var(--primary-color);
   color: var(--text-color);
-}
-
-
-#typed {
-  color: var(--primary-color);
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  vertical-align: top;
-}
-
-.section-text {
-
-  background-color: var(--section-bg-color);
-  padding: 60px 30px;
-  margin-bottom: 60px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-
-.section-text p,
-#our-mission p,
-#our-approach p {
-  font-size: 18px;
-  line-height: 1.8;
-  margin-bottom: 20px;
-  text-align: justify;
-}
-.section-text .center-highlight-text,
-.our-mission .center-highlight-text,
-.our-approach .center-highlight-text {
-  color: var(--primary-color);
-  text-align: center;
-  display: inline-block;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.highlight-text {
-  color: var(--primary-color);
-  font-weight: 600;
-}
-
-.underlined {
-  text-decoration: underline;
-}
-.diagram-container {
-  text-align: center;
-  margin: 2em 0;
-}
-.plain-english {
-  background-color: #2a2a2a;
-  border-left: 4px solid var(--primary-color);
-  padding: 20px;
-  margin-top: 30px;
-  font-style: italic;
-  font-size: 18px;
-  color: #e0e0e0;
-}
-
-.approach-diagram {
-  max-width: 100%;
-  margin: 40px auto;
-  text-align: center;
-}
-
-.approach-diagram img {
-  max-width: 100%;
-  height: auto;
-}
-
-#our-approach ul {
-  list-style-type: none;
-  padding: 0;
-  margin-bottom: 20px;
-}
-
-#our-approach li {
-  font-size: 16px;
-  line-height: 1.6;
-  margin-bottom: 10px;
-}
-
-.features-grid a:hover .feature {
-  background-color: #515155;
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+} 
 
 /* Footer */
-footer {
+footer { /* FOOTER: Styles the footer with a dark background and centered text.*/ 
   background-color: #000;
   padding: 20px;
   text-align: center;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #222;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--primary-color);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #2e70b2;
-}
 
 /* Media Queries */
-@media (max-width: 768px) {
+@media (max-width: 768px) { /*- Adjusts the layout for mobile devices.*/
   nav {
-    flex-direction: column;
-    align-items: center;
-    padding: 10px 0;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 10px 10px;
+    position: relative;
   }
 
   .logo {
-    margin-bottom: 10px;
+    position: absolute;
+    
+    margin-bottom: 0;
+    height: 40px;
   }
 
   nav ul {
-    flex-direction: row;
-    justify-content: center;
-    position: static;
-    background-color: transparent;
-    padding: 0;
+    flex-direction: column; /* Stack the rows vertically */
+    justify-content: flex-start;
+    margin-left: 90px;
+    gap: 5px; /* Add space between rows */
+  }
+
+  /* Create first row */
+  nav ul .nav-row-1 {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  /* Create second row */
+  nav ul .nav-row-2 {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
   }
 
   nav ul li {
-    margin: 0 5px;
+    margin: 0; /* Remove default margins */
   }
 
   nav ul li a {
@@ -404,31 +418,13 @@ footer {
     font-size: 16px;
   }
 
-  .section-text,
-  #our-mission,
-  #our-approach {
+  .text-section {
     padding: 40px 20px;
   }
 
-
-  .section-text p,
-  #our-mission p,
-  #our-approach p,
+  .text-section p,
   .plain-english {
-    font-size: 16px;
-  }
-
-  .approach-diagram img {
-    width: 100%;
-  }
-
-  .hero-subtitle {
-    font-size: 20px;
-    line-height: 1.4;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+    font-size: 12px;
   }
 
   .project-icons {
@@ -440,38 +436,22 @@ footer {
   }
 }
 
+/* Desktop styles (min-width: 769px) */
 @media (min-width: 769px) {
   nav ul {
-    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
   }
-}
 
-#typed {
-  color: var(--primary-color);
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  vertical-align: top;
-}
+  .nav-row-1, .nav-row-2 {
+    display: flex;
+    gap: 20px;
+  }
 
-
-.hero-subtitle {
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-.section-text.animate {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-}
-
-=======
-.project-icons {
-  width: 4em;
-  height: 4em;
-  margin-bottom: 15px;
-  display: block;
-  margin: 0 auto 15px;
+  nav ul li {
+    margin: 0;
+  }
 }
