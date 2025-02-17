@@ -12,11 +12,13 @@
 /* Imports */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Outfit:wght@100..900&display=swap');
 
-/* Reset and Base Styles */
-* {
+
+html, body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
 }
 
 html {
@@ -27,6 +29,7 @@ body {
   font-family: 'Outfit', 'Poppins', sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
+  min-height: 100vh;
 }
 
 /* Typography */
@@ -141,7 +144,7 @@ nav ul li a:hover {
 
 .hero h1 {
   font-size: 32px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .hero p {
@@ -240,10 +243,17 @@ nav ul li a:hover {
   color: var(--text-color);
 }
 
-/* Content Sections */
-.our-thesis,
-#our-mission,
-#our-approach {
+
+#typed {
+  color: var(--primary-color);
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.section-text {
+
   background-color: var(--section-bg-color);
   padding: 60px 30px;
   margin-bottom: 60px;
@@ -252,6 +262,26 @@ nav ul li a:hover {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
+}
+
+
+.section-text p,
+#our-mission p,
+#our-approach p {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+.section-text .center-highlight-text,
+.our-mission .center-highlight-text,
+.our-approach .center-highlight-text {
+  color: var(--primary-color);
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .highlight-text {
@@ -259,6 +289,13 @@ nav ul li a:hover {
   font-weight: 600;
 }
 
+.underlined {
+  text-decoration: underline;
+}
+.diagram-container {
+  text-align: center;
+  margin: 2em 0;
+}
 .plain-english {
   background-color: #2a2a2a;
   border-left: 4px solid var(--primary-color);
@@ -367,10 +404,22 @@ footer {
     font-size: 16px;
   }
 
-  .our-thesis,
+  .section-text,
   #our-mission,
   #our-approach {
     padding: 40px 20px;
+  }
+
+
+  .section-text p,
+  #our-mission p,
+  #our-approach p,
+  .plain-english {
+    font-size: 16px;
+  }
+
+  .approach-diagram img {
+    width: 100%;
   }
 
   .hero-subtitle {
@@ -405,6 +454,20 @@ footer {
   vertical-align: top;
 }
 
+
+.hero-subtitle {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.section-text.animate {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+=======
 .project-icons {
   width: 4em;
   height: 4em;
