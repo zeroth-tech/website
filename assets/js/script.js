@@ -14,10 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
   function updateHeaderVisibility() {
     if (window.pageYOffset > bigLogoOffset) {
       logo.classList.add('visible');
-      navUl.classList.add('visible');
     } else {
       logo.classList.remove('visible');
-      navUl.classList.add('visible');
     }
   }
 

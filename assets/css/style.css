@@ -81,65 +81,70 @@ section.animate { /* ANIMATED SECTIONS: When the .animate class is added, sectio
 }
 
 /* Navigation */
-header { /* HEADER STYLES: Fixed header with a blurred background. Remains visible at the top while scrolling.*/*/
+header { /* HEADER STYLES: Fixed header with a blurred background */
   background-color: var(--background-color);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  padding: 20px 0;
+  padding: 10px 0;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 999;
-}
-
-nav { /* NAVIGATION: Centers the navigation bar and sets up its basic flexbox layout.*/
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 0 20px;
-  box-sizing: border-box;
-  max-width: 100%;
 }
 
-nav ul { /* NAVIGATION LIST: The <ul> starts with opacity:0 and is made visible by adding the .visible class via JS.*/
+nav { /* NAVIGATION: Centers the navigation bar */
   display: flex;
-  list-style: none;
-  flex-wrap: wrap;
-  margin: 0;
-  padding: 0;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 20px; /* Add space for logo to prevent layout shift */
+}
+
+.logo { /* LOGO: Initially hidden, positioned above nav */
   opacity: 0;
   transition: opacity 0.3s ease;
+  position: absolute; /* Position logo absolutely */
+  top: 0px; /* Align with header padding */
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+  display: none;
 }
 
-nav ul.visible { /* NAVIGATION VISIBILITY: The <ul> becomes visible when the .visible class is added.*/
+.logo.visible { /* LOGO VISIBILITY: Show when scrolled past hero */
+  opacity: 1;
+  display: block;
+}
+
+nav ul { /* NAVIGATION LIST: Centered layout */
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: center; /* Center the navigation items */
+  gap: 20px;
+  width: 100%; /* Ensure full width for centering */
+}
+
+/* Remove or modify previous visibility classes as they're no longer needed */
+nav ul.visible {
   opacity: 1;
 }
 
 nav ul li { /* NAVIGATION LIST ITEMS: Sets the margin for each list item.*/
-  margin: 0 10px;
+  margin: 0;
 }
 
 nav ul li a { /* NAVIGATION LINKS: Styles the <a> elements inside the navigation list.*/
   color: var(--text-color);
   text-decoration: none;
   transition: color 0.3s;
-  font-size: 16px;
+  font-size: 14.5px;
   padding: 5px 10px;
-}
-
-/* Logo class */
-.logo { /* LOGO: Hidden by default and later shown when .visible is added.*/
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  position: absolute;
-  left: 0;
-}
-
-.logo.visible { /* LOGO VISIBILITY: The logo becomes visible when the .visible class is added.*/
-  opacity: 1;
 }
 
 .logo img {/* LOGO IMAGE: Sets the height of the logo image.*/  
@@ -244,6 +249,7 @@ nav ul li a { /* NAVIGATION LINKS: Styles the <a> elements inside the navigation
   font-style: italic;
   font-size: 18px;
   color: #e0e0e0;
+  text-align: left;
 }
 
 /* Features Section - projects we are excited about*/
@@ -307,7 +313,7 @@ nav ul li a { /* NAVIGATION LINKS: Styles the <a> elements inside the navigation
   font-style: italic;
   color: #a0a0a0;
   line-height: 1.4;
-  font-weight: 300;
+  font-weight: 500;
 }
 .project-icons { /* PROJECT ICONS: Styles the project icons with a width, height, margin, display, and margin.*/ 
   width: 4em;
@@ -359,77 +365,18 @@ footer { /* FOOTER: Styles the footer with a dark background and centered text.*
 
 
 /* Media Queries */
-@media (max-width: 768px) { /*- Adjusts the layout for mobile devices.*/
-  nav {
-    flex-direction: row;
-    justify-content: space-between;
-    position: relative;
-    width: 100%;
-    padding: 0 15px;
-    box-sizing: border-box;
-  }
-
-  .logo {
-    position: absolute;
-    left: 15px; /* Adjusted to match nav padding */
-    margin-bottom: 0;
-    height: 40px;
-  }
-
-  nav ul {
-    flex-direction: column; /* Stack the rows vertically */
-    justify-content: flex-start;
-    margin-left: auto; /* Changed from fixed margin to auto */
-    margin-right: 15px; /* Added to match left logo padding */
-    gap: 2px;
-  }
-
-  /* Create first row */
-  nav ul .nav-row-1 {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-  }
-
-  /* Create second row */
-  nav ul .nav-row-2 {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-  }
-
-  nav ul li {
-    margin: 0; /* Remove default margins */
-  }
-
-  nav ul li a {
-    font-size: 14px;
-    padding: 5px;
-  }
-
-  .feature {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    min-height: 300px;
-  }
-
-  .hero h1 {
-    font-size: 24px;
-  }
-
-  .hero p {
-    font-size: 16px;
-  }
+@media (max-width: 768px) {/*- Adjusts the layout for mobile devices.*/
+  
 
   .text-section {
     padding: 40px 20px;
   }
-
-  .text-section p,
-  .plain-english {
-    font-size: 12px;
-  }
+  .text-section p {
+    font-size: 15px;
+  } 
+  .plain-english p, li {
+    font-size: 15px;
+  } 
 
   .project-icons {
     width: 4em;
@@ -445,16 +392,10 @@ footer { /* FOOTER: Styles the footer with a dark background and centered text.*
   nav ul {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: center; /* Center the navigation items */
     align-items: center;
     gap: 20px;
-    margin-left: auto;
-    margin-right: 15px;
-  }
-
-  .nav-row-1, .nav-row-2 {
-    display: flex;
-    gap: 20px;
+    margin: 0 auto; /* Center the navigation list horizontally */
   }
 
   nav ul li {
