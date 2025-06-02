@@ -323,6 +323,19 @@ nav ul li a { /* NAVIGATION LINKS: Styles the <a> elements inside the navigation
   margin: 0 auto 15px;
 }
 
+/* Vero logo theme-aware styling */
+.vero-logo {
+  content: url('../img/vero-logo-dark.svg');
+  height: 45px; /* 10% smaller than the standard 50px */
+}
+
+@media (prefers-color-scheme: light) {
+  .vero-logo {
+    content: url('../img/vero-logo-lite.svg');
+    height: 45px; /* 10% smaller than the standard 50px */
+  }
+}
+
 /* Buttons */
 .btn { /* BUTTON: Styles the button with a display, background color, text color, padding, border radius, text decoration, transition, margin, width, and fit content.*/
   display: block;
