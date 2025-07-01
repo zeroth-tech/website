@@ -1,0 +1,5 @@
+﻿{
+  "Description": "Domain ownership verification file for Microsoft 365 - place in the website root",
+  "Domain": "zeroth.technology",
+  "Id": "cfa59fa2-cfe4-4ce1-b2fb-bb61db01549d"
+}
