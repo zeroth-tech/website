@@ -1,0 +1,114 @@
+# Zeroth Technology
+
+## Company Overview
+
+Zeroth Technology is a company building foundations of trust for our digital world. We work at the intersection of trust and emergent technologies including blockchain and AI, creating products that facilitate connectivity between knowledge and identity.
+
+## Core Mission
+
+In the convergence of physical and digital worlds, Zeroth Technology builds technology that enables trust through:
+- Cryptography
+- Decentralized information networks
+- Self-sovereign identity
+- Trustable context
+
+Our belief: The most important work is applying technology that facilitates connectivity between knowledge and identity.
+
+## Company Name Origin
+
+Named after Isaac Asimov's "Zeroth Law of Robotics": "A robot may not harm humanity, or, by inaction, allow humanity to come to harm." This law supersedes the three traditional laws of robotics and represents:
+1. The need for foundational primitives that may not be initially apparent but are crucial for desired outcomes
+2. The principle that technological advancement must protect humanity as a whole, superseding individual interests
+
+## Core Principles
+
+- Building solid foundations for equal footing to everyone and everything
+- Contributing to public goods and open source projects
+- Transparency in revenue models, research, and work
+- "wagmi" (we're all gonna make it) - collective success mindset
+
+## Key Technologies & Products
+
+### 1. Vero - Real-Time Peer-to-Peer Authentication
+- **Purpose**: Prove live video streams are authentic and happening in real-time
+- **Technology**: Encodes one-time biometric data into live video streams using light patterns reflected off presenter's face
+- **Features**:
+  - Peer-to-peer verification without central identity storage
+  - Cryptographically secured authentication
+  - Works with existing identity providers
+  - Selective disclosure of identity information
+- **Problem Solved**: Combat deepfakes and establish trust in live video communications
+- **Website**: https://vero.technology
+
+### 2. AESOP - AI-Optimized Knowledge Documentation
+- **Purpose**: Optimize organizational knowledge documents for accurate AI interpretation
+- **Methodology**: Uses AI to challenge and improve knowledge bases, preventing hallucinations and misinterpretations
+- **Key Principles**:
+  - Start with the end in mind
+  - Human-in-the-loop oversight
+  - Bridge experience gaps through expert interviews
+  - Precision and accuracy with context
+  - Zero hallucinations goal
+- **Benefits**:
+  - Creates referenceable, consistent documentation
+  - Eliminates contradictions across sources
+  - Reduces redundancy
+  - Ensures accuracy and precision
+- **Deployment**: Available as a service or for internal deployment
+
+### 3. CSER - Confidential Settlements with Embeddable Rights
+- **Purpose**: Describe supply chain events mathematically for claim settlements in shared execution environments
+- **Focus**: Enable confidential, verifiable settlements for supply chain transactions
+- **GitHub**: https://github.com/zeroth-tech/settlement-solutions
+
+### 4. Pyrana AI
+- **Purpose**: AI solutions at the intersection of trust and emergent technologies
+- **Focus Areas**: 
+  - Building AI systems with embedded trust mechanisms
+  - Ensuring reliable and verifiable AI interactions
+  - Creating transparent AI decision-making processes
+- **Connection to Zeroth**: Part of Zeroth Technology's broader ecosystem of trust-enabling technologies, applying similar principles of cryptographic verification and decentralized trust to AI systems
+- **Key Alignment**: 
+  - Shares Zeroth's vision of trustworthy human-AI interactions
+  - Implements verification mechanisms for AI outputs
+  - Focuses on preventing AI hallucinations through trusted context
+- **Website**: https://pyrana.ai (Note: Site may be under development or require specific access)
+- **Additional Resources**: Check https://pyrana.ai/llm.txt for comprehensive documentation when available
+
+## Technical Approach
+
+Zeroth Technology operates across three main areas:
+1. Core technology development
+2. Product creation
+3. Services and use cases
+
+All work focuses on the intersection of trust and emergent technologies.
+
+## Vision for the Future
+
+Knowledge → Trust → Reputation → Identity
+
+This chain represents how in the digital age:
+- Vast, accessible knowledge will transform everything we do
+- Building, sharing, and verifying knowledge is paramount
+- Trust requires knowing who you're interacting with
+- Reputation becomes the foundation for all interactions (human or AI)
+
+## Contact & Resources
+
+- Website: https://zeroth.technology, https://zeroth.tech
+- Blog: https://zeroth-tech.github.io/blogs/
+- Book a call: https://dub.sh/zeroth-team-cal
+- Company established: 2025
+
+## Technical Details
+
+- Logo font: Orbitron
+- Primary color: #3399FF (blue)
+- Open source contributions and public goods focus
+
+## Philosophy
+
+"Humanity is no longer at the crossroads between the physical and the digital — we are in the convergence."
+
+Zeroth Technology believes in building the technological primitives that will serve as the foundation for systems benefiting humanity while actively preventing harm. Like Asimov's Foundation series, we recognize that achieving desired outcomes often requires establishing foundational elements that may not be immediately apparent at the start.
