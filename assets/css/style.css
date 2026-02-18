@@ -336,6 +336,13 @@ nav ul li a { /* NAVIGATION LINKS: Styles the <a> elements inside the navigation
   }
 }
 
+/* Hero Logo */
+.hero-logo {
+  width: 438px;
+  max-width: 80%;
+  height: auto;
+}
+
 /* Hero Sub-copy */
 .hero-sub {
   font-size: 20px;
@@ -498,13 +505,43 @@ footer { /* FOOTER: Styles the footer with a dark background and centered text.*
 /* Media Queries */
 @media (max-width: 768px) {/*- Adjusts the layout for mobile devices.*/
 
+  .hero {
+    height: auto;
+    min-height: 100vh;
+    padding: 80px 0 40px;
+  }
+
+  .hero-content {
+    padding: 0 20px;
+  }
+
+  .hero-content img {
+    max-width: 80%;
+    height: auto;
+  }
+
+  .hero h1 {
+    font-size: 22px;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+  }
+
+  .hero-sub-small {
+    font-size: 13px;
+  }
 
   .text-section {
-    padding: 40px 20px;
+    padding: 30px 16px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
+
   .text-section p {
     font-size: 15px;
   }
+
   .plain-english p, li {
     font-size: 15px;
   }
@@ -519,7 +556,7 @@ footer { /* FOOTER: Styles the footer with a dark background and centered text.*
 
   .principles-grid {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
   }
 
   .principle-card {
@@ -527,19 +564,23 @@ footer { /* FOOTER: Styles the footer with a dark background and centered text.*
   }
 
   .venture-card {
-    padding: 18px 20px;
+    padding: 18px 16px;
   }
 
   .venture-header h3 {
     font-size: 18px;
   }
 
-  .hero-sub {
-    font-size: 17px;
+  .venture-card p {
+    font-size: 14px;
   }
 
-  .hero-sub-small {
-    font-size: 14px;
+  .venture-subtitle {
+    padding-left: 0;
+  }
+
+  h2 {
+    font-size: 22px;
   }
 }
 
