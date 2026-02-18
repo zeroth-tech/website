@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   var typed = new Typed('#typed', {
-    strings: ['trust', 'transparency', 'privacy', 'identity', 'knowledge'],
+    strings: ['trust', 'sovereignty', 'finality', 'agency'],
     typeSpeed: 50,
     backSpeed: 60,
     loop: true
@@ -78,31 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const target = this.getAttribute('href');
-      smoothScroll(target, 1250); // You can adjust the duration as needed.
+      smoothScroll(target, 1250);
     });
   });
-
-  // Removed the Intersection Observer for the first section-text to allow the scroll event
-  // listener above to control the fade-in timing when scrolling past 75% of the home section.
-  /*
-  const observerOptions = {
-    root: null,
-    rootMargin: '-25% 0px 0px 0px', // Old setting triggered too early
-    threshold: 0
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, observerOptions);
-
-  const firstSection = document.querySelector('.section-text');
-  if (firstSection) {
-    observer.observe(firstSection);
-  }
-  */
 });
