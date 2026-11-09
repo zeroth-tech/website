@@ -1,0 +1,4 @@
+Contact: mailto:jamey@zeroth.technology
+Expires: 2027-05-01T00:00:00Z
+Preferred-Languages: en
+Canonical: https://zeroth.technology/.well-known/security.txt
