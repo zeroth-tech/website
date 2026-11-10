@@ -69,8 +69,9 @@ footer{background:var(--bg);position:relative;z-index:2}
 .hero-logo-anchor{display:inline-block;width:var(--home-logo-width);line-height:0;vertical-align:baseline}
 .hero-logo-anchor img{display:block;width:100%;height:auto}
 .brand-ready .hero-logo-anchor img{visibility:hidden}
-.brand-bridge{position:fixed;z-index:31;pointer-events:none;line-height:0;contain:layout style;transform-origin:top left}
-.brand-bridge[hidden]{display:none}
+.brand-track{position:absolute;inset:0;z-index:31;pointer-events:none}
+.brand-bridge{position:sticky;line-height:0}
+.brand-docked .brand-bridge{visibility:hidden}
 .brand-bridge img{display:block;width:100%;height:auto}
 @media(max-width:600px){.site-header{margin:0;padding:14px 6%}.home-page .site-header{padding-top:12px;padding-bottom:12px}.home-page .site-header nav{gap:10px}.home-page .site-header nav a{font-size:9px}.hero-logo-anchor{vertical-align:baseline}}
 
